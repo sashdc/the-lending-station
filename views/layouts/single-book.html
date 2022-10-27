@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Lending Station</title>
+  <link rel="icon" href="../../public/images/icon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="../../public/css/style.css">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class = "nav-link" href="/dashboard">Dashboard</a>
+    </li>
+    <!-- <li class="nav-item">
+        <a class = "nav-link" id ="logout" href="/">Logout {{user.username}}</a>
+    </li> -->
+</ul>
+<ul class="navbar-nav  ">
+    <li class="nav-item">
+        <a class = "nav-link" href="/login">Admin Login</a>
+       </li>
+       <li class="nav-item">
+        <a class = "nav-link" href="/login">User Login</a>
+       </li>
+    </ul>
+  </div>
+</nav>
+
+  <div class="flex-column justify-space-around">
+<div class="jumbotron jumbotron-fluid border-bottom">
+  <div class="container">
+    <h1 class="display-1"><a href="/"><b>The Lending Station</b></a></h1>
+    <p class="lead">Your one stop to find out what books are available</p>
+           
+  </div>
+
+</div>
+<!-- _____--------------------------_-------------------------------------------------------------------------- -->
+<div class="container d-flex">
+
+<div class="d-flex flex-column">
+  <img src="../../public/images/covers/4.jpg" class=" float-left rounded mx-auto d-block">
+</div>
+<div class="d-flex flex-column ml-5 float-right">
+<h1>Book Title, Year</h1>
+<h2>Author Name</h2>
+<p>A rural community in southeast Tennessee is tested when a teenage girl goes missing. Deputy Galloway suspects his girlfriend's husband of foul play and launches an investigation. Nestled in the nearby Smoky Mountains, a bluegrass tavern may hold clues to the teen's fate. Yet the hills don't talk. Galloway's suspect's worst crime may be in allowing circumstance to determine reality, leaving others to grapple with conjecture. Through laughter, love, and loss, Galloway must discover his suspect's elusive way over women so that he an bring justice for the missing girl and win back his love's heart. After all, no one missing is lost forever.
+</p>
+<h4>Available?</h4>
+<h4>Borrowed Before?</h4>
+
+<form>
+  Leave a review
+  <div class="username">
+  as Username
+  </div>
+  <div class="form-group">
+    <textarea class="form-control w-100" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+
+
+</div>
+</div>
+    <!-- _____--------------------------_-------------------------------------------------------------------------- -->
+
+    <footer>
+      
+    </footer>
+  </div>
+
+  <!-- Render script for logged in users only -->
+  {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>
