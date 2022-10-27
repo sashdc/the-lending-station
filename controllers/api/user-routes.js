@@ -17,7 +17,14 @@ router.get ('/', async (req, res) => {
 router.post('/signup', async (req, res) => {
     // create a new user
     try {
-      const userData = await User.create(req.body);
+      const userData = await User.create({
+        "username": req.body.username,
+        "password": req.body.password,
+        "email": req.body.email,
+        "first_name": req.body.first_name,
+        "last_name": req.body.last_name,
+        "admin": false
+      });
       
       req.session.save(() => {
         req.session.loggedIn = true
