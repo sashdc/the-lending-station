@@ -34,7 +34,7 @@ Book.init(
       allowNull: false,
     },
     rating: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.DECIMAL(2),
         allowNull: false,
     },
     available: {
@@ -51,6 +51,10 @@ Book.init(
             model: 'user',
             key: 'id'
         }
+    },
+    cover_link: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   },
   {

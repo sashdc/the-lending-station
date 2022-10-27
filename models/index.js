@@ -1,18 +1,19 @@
 const User = require('./user')
 const Book = require('./book')
-const Review = require ('./review')
-
-User.hasOne(Book, {
-    foreignKey: 'borrowed_user',
-});
-
-User.belongsTo(Book, {
-    foreignKey: 'borrowed_book'
-});
+const Review = require('./review')
+const BorrowHistory = require('./borrowHistory')
 
 User.hasMany(Review, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'
+});
+
+User.belongsToMany (Book, {
+    through: {
+        model: BorrowHistory,
+        foreignKey: 'user_id',
+        unique: false
+    }
 });
 
 Book.belongsTo(User, {
@@ -20,13 +21,17 @@ Book.belongsTo(User, {
     //set null if user is deleted
 });
 
-Book.hasOne(User, {
-    foreignKey: 'borrowed_book',
-});
-
 Book.hasMany(Review, {
     foreignKey: 'book_id',
 });
+
+// Book.belongsToMany (User, {
+//     through: {
+//         model: BorrowHistory,
+//         foreignKey: 'book_id',
+//         unique: false
+//     }
+// });
 
 Review.belongsTo(User, {
     foreignKey: 'user_id',
@@ -38,4 +43,4 @@ Review.belongsTo(Book, {
     onDelete: 'CASCADE',
 });
 
-module.exports = {User, Book, Review}
+module.exports = {User, Book, Review, BorrowHistory}
