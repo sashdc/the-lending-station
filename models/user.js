@@ -43,14 +43,6 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    borrowed_book: {
-        type: DataTypes.INTEGER,
-        unique: true,
-        references: {
-            model: 'book',
-            key: 'id'
-        }
-    },
     admin: {
         type: DataTypes.BOOLEAN,
         allowNull: false,

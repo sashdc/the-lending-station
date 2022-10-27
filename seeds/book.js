@@ -15,7 +15,8 @@ const bookData = [
         rating: 3.89,
         available: false,
         available_next: next,
-        borrowed_user: 2
+        borrowed_user: 2,
+        cover_link: 'placeholder'
     },
     {
         id: 2,
@@ -27,7 +28,8 @@ const bookData = [
         rating: 4.5,
         available: false,
         available_next: next,
-        borrowed_user: 3
+        borrowed_user: 3,
+        cover_link: 'placeholder'
     },
     {
         id: 3,
@@ -39,7 +41,8 @@ const bookData = [
         rating: 4.24,
         available: true,
         available_next: today,
-        borrowed_user: null
+        borrowed_user: null,
+        cover_link: 'placeholder'
     },
     {
         id: 4,
@@ -51,7 +54,8 @@ const bookData = [
         rating: 4.6,
         available: false,
         available_next: next,
-        borrowed_user: 5
+        borrowed_user: 5,
+        cover_link: 'placeholder'
     },
     
 ]
