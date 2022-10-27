@@ -35,6 +35,14 @@ User.init(
             isEmail: true,
         }
     },
+    first_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    last_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     borrowed_book: {
         type: DataTypes.INTEGER,
         unique: true,

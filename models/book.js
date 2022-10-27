@@ -25,6 +25,10 @@ Book.init(
         type: DataTypes.STRING,
         allowNull: false,
     },
+    isbn: {
+      type: DataTypes.BIGINT,
+      allowNull: false,
+    },
     synopsis: {
       type: DataTypes.TEXT,
       allowNull: false,
