@@ -1,0 +1,32 @@
+{
+  "name": "the-lending-station",
+  "version": "1.0.0",
+  "description": "A tracker app for lending different items",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node seeds/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sashdc/the-lending-station.git"
+  },
+  "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.5",
+    "bcrypt": "^5.1.0",
+    "connect-session-sequelize": "^7.1.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.1.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sashdc/the-lending-station/issues"
+  },
+  "homepage": "https://github.com/sashdc/the-lending-station#readme"
+}
