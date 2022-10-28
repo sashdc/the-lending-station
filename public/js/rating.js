@@ -8,12 +8,15 @@ function executeRating(stars) {
   stars.map((star) => {
     star.onclick = () => {
       i = stars.indexOf(star);
+      starRating = i + 1;
+      console.log("this many stars " + starRating)
 
       if (star.className===starClassInactive) {
         for (i; i >= 0; --i) stars[i].className = starClassActive;
       } else {
         for (i; i < starsLength; ++i) stars[i].className = starClassInactive;
       }
+
     };
   });
 }
