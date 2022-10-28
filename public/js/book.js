@@ -3,7 +3,7 @@ const newFormHandler = async (event) => {
 
     const review = document.querySelector('#review').value.trim();
 
-    if (review ) {
+    if (review) {
         const response = await fetch(`/api/books`, {
           method: 'POST',
           body: JSON.stringify({ review }),

@@ -6,7 +6,7 @@ router.get('/user', async (req, res) => {
     try {
         userData = await User.findAll({include: [
             { model: Book, attributes: ['title', 'author']}
-        ], where: {id: 1}})
+        ], where: {id: req.session.user_id}})
         res.status(200).json(userData)
     } catch (err) {
         res.status(500).json(err);
@@ -16,7 +16,7 @@ router.get('/user', async (req, res) => {
 //get book where user_id = req.session.user_id
 router.get('/book', async (req,res) => {
     try {
-        bookData = await Book.findAll({where: {borrowed_user: 2}})
+        bookData = await Book.findAll({where: {borrowed_user: req.session.user_id}})
 
         res.status(200).json(bookData)
     } catch (err) {
