@@ -28,6 +28,14 @@ router.get("/userlogin", (req, res) => {
   }}
 );
 
+// adding new book page
+router.get("/addbook", (req, res) => {
+  try{res.render("new-book" );
+}catch (err) {
+    res.status(500).json(err);
+  }}
+);
+
 // accessing admin dahsboard page
 router.get("/admin", async (req, res) => {
   try {
