@@ -5,7 +5,7 @@ const newFormHandler = async (event) => {
 
     if (review ) {
         const response = await fetch(`/api/books`, {
-          method: 'GET',
+          method: 'POST',
           body: JSON.stringify({ review }),
           headers: {
             'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ const newFormHandler = async (event) => {
           const id = event.target.getAttribute('data-id');
       
           const response = await fetch(`/api/image/${id}`, {
-            method: 'GET',
+            method: 'POST',
           });
       
           if (response.ok) {
