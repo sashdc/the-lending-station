@@ -29,12 +29,23 @@ router.get("/userlogin", (req, res) => {
 );
 
 // accessing admin dahsboard page
-router.get("/admin", (req, res) => {
-  try{res.render("admin-dashboard" );
-}catch (err) {
+router.get("/admin", async (req, res) => {
+  try {
+    // Get all books and JOIN with user data
+    const bookData = await Book.findAll();
+    console.log(bookData);
+    // Serialize data so the template can read it
+    const books = bookData.map((book) => book.get({ plain: true }));
+    console.log(books);
+    // Pass serialized data and session flag into template
+    res.render("admin-dashboard", {
+      books,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
     res.status(500).json(err);
-  }}
-);
+  }
+});
 
 // accessing library page
 router.get("/library", async (req, res) => {
