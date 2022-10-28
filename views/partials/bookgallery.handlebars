@@ -3,8 +3,8 @@
 
   <div class="row text-center text-lg-start">
 
-     {{#each book}}
-        {{> book-tile post }}
+     {{#each books as |book|}}
+        {{> book-tile book }}
     {{/each}}
    
   </div>

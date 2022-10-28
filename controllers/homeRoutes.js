@@ -1,4 +1,6 @@
 const router = require("express").Router();
+const { Book } = require("../models");
+
 const sequelize = require('../config/connection');
 
 
@@ -33,6 +35,26 @@ router.get("/admin", (req, res) => {
     res.status(500).json(err);
   }}
 );
+
+// accessing library page
+router.get("/library", async (req, res) => {
+  try {
+    // Get all books and JOIN with user data
+    const bookData = await Book.findAll();
+    console.log(bookData);
+    // Serialize data so the template can read it
+    const books = bookData.map((book) => book.get({ plain: true }));
+    console.log(books);
+    // Pass serialized data and session flag into template
+    res.render("library", {
+      books,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 
 
