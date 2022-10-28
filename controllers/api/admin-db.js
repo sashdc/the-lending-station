@@ -17,7 +17,7 @@ router.get('/book', async (req,res) => {
 // post book
 router.post('/new-book', async (req, res) => {
     try {
-        bookData = await Book.create({
+        let bookData = await Book.create({
             "title": req.body.title,
             "year": req.body.year,
             "synopsis": req.body.synopsis,
@@ -30,7 +30,34 @@ router.post('/new-book', async (req, res) => {
             "cover_link": req.body.cover
         })
 
-        res.status(200).json({ bookData })
+        res.status(200).json(bookData)
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
+// update book borrowed status
+router.put('/:id', async (req, res) => {
+    try {
+        let bookData = await Book.update({
+            "borrowed_user": req.body.user_id
+        }) 
+
+        res.status(200).json(bookData)
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
+//create borrow history
+router.post('/:id', async (req, res) => {
+    try {
+        let bhData = await BorrowHistory.post({
+            "user_id": req.session.user_id,
+            "book_id": req.params.id
+        })
+        res.status(200).json(bhData)
     } catch (err) {
         res.status(500).json(err);
     }
