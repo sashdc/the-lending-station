@@ -1,4 +1,4 @@
-<div class="admin-dash w-75 m-auto ">
+  <div class="admin-dash w-100 m-auto ">
   <h1>Admin Dashboard</h1>
   <h4>A list of all books and their availability</h4>
 <table class="table table-hover border mt-4">
@@ -6,38 +6,21 @@
     <tr>
       <th scope="col">ID#</th>
       <th scope="col">Book Title</th>
+      <th scope="col">Author</th>
       <th scope="col">Available</th>
+      <th scope="col">Due Back</th>
       <th scope="col">Borrower ID#</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Paradise Lost</td>
-      <td>No</td>
-      <td>0087654</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Paradise Lost</td>
-      <td>No</td>
-      <td>0087654</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Paradise Lost</td>
-      <td>No</td>
-      <td>0087654</td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>Paradise Lost</td>
-      <td>No</td>
-      <td>0087654</td>
-    </tr>
+      {{#each books as |book|}}
+        {{> adminbookdata book }}
+    {{/each}}
   </tbody>
 </table>
 
 
-<button type="button" class="btn btn-primary btn-lg btn-block m-auto w-25">Add a book to the inventory</button>
+<button type="button" class="btn btn-primary btn-lg btn-block m-auto w-50">Add a book to the inventory</button>
 </div>
+
+  <script src="/js/admindashboard.js"></script>
