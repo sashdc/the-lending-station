@@ -1,34 +1,6 @@
 const router = require('express').Router();
 const {User, Book, Review, BorrowHistory} = require('../../models');
 
-router.get ('/', async (req, res) => {
-    try {
-        const userData = await User.findAll({include: [
-            { model: Book, attributes: ['title', 'author', 'rating'] },
-            { model: Review, attributes: ['content', 'book_id'] },
-        ]
-        })
-        res.status(200).json(userData);
-    } catch (err) {
-        res.status(500).json(err)
-    }
-})
-
-router.post('/signup', async (req, res) => {
-    // create a new user
-    try {
-      const userData = await User.create(req.body);
-      
-      req.session.save(() => {
-        req.session.loggedIn = true
-        req.session.user_id = userData.dataValues.id
-        res.status(200).json(userData);
-      })
-    } catch (err) {
-      res.status(500).json(err);
-    }
-});
-  
 router.post('/login', async (req, res) => {
     try {
       const dbUserData = await User.findOne({
@@ -52,6 +24,7 @@ router.post('/login', async (req, res) => {
       req.session.save(() => {
         req.session.loggedIn = true
         req.session.user_id = dbUserData.dataValues.id
+        req.session.admin = dbUserData.davaValues.admin
         res.status(200).json({ user: dbUserData, message: 'You are now logged in!' });
       });
   
