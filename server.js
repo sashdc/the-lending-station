@@ -4,6 +4,10 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utlis/helpers');
+const multer = require('multer')
+
+const storage = multer.memoryStorage()
+const uploadDB = multer({ storage: storage})
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -34,6 +38,12 @@ app.use(session(sess));
 // Inform Express.js on which template engine to use
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+
+//Muldter
+app.use(uploadDB.single('image'), (req, res, next) => {
+  console.log(req.file)
+  next()
+})
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
