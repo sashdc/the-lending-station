@@ -2,43 +2,10 @@ const router = require('express').Router();
 const {User, Book, Review, BorrowHistory} = require('../models');
 
 
-// accessing individualbook page
-// router.get("/:id", async (req, res) => {
-//   try {
-//     // Get all books and JOIN with user data
-//     const bookData = await Book.findOne({
-//       where: {
-//         id: req.params.id,
-//       },
-//       include: [
-//         {
-//           model: User,
-//           attributes: ["username"],
-//         },
-//         {
-//             model: Review,
-//           },
-//       ],
-//     });
-//     console.log(bookData);
-//     // Serialize data so the template can read it
-//     const book = bookData.get({ plain: true });
-//     console.log(book);
-//     // Pass serialized data and session flag into template
-//     res.render("single-book", {
-//       book,
-//       loggedIn: req.session.loggedIn,
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 
 
 
-// const book = bookData.map((b) => b.get({ plain: true}))
-// // Alastair's
 // book by id, maybe move to site route
 router.get("/:id", async (req, res) => {
   try {
@@ -50,7 +17,7 @@ router.get("/:id", async (req, res) => {
         },
         {
             model: User,
-          },
+        }         
       ],
     });
     console.log(bookData);
