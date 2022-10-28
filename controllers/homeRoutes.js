@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Book } = require("../models");
+const { Book, User, Review } = require("../models");
 
 const sequelize = require('../config/connection');
 
@@ -65,6 +65,36 @@ router.get("/library", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// accessing individualbook page
+// router.get("/book/:id", async (req, res) => {
+//   try {
+//     // Get all books and JOIN with user data
+//     const bookData = await Book.findOne({
+//       where: {
+//         id: req.params.id,
+//       },
+//       include: [
+//         {
+//           model: User,
+//           attributes: ["username"],
+//         },
+//       ],
+//     });
+//     // console.log(bookData);
+//     // Serialize data so the template can read it
+//     const book = bookData.get({ plain: true });
+//     console.log(book);
+//     // Pass serialized data and session flag into template
+//     res.render("single-book", {
+//       book,
+//       loggedIn: req.session.loggedIn,
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
 
 
 
