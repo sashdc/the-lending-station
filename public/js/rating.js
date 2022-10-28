@@ -4,12 +4,13 @@ function executeRating(stars) {
   const starClassActive = "rating__star fas fa-star";
   const starClassInactive = "rating__star far fa-star";
   const starsLength = stars.length;
+  let bookRating;
   let i;
   stars.map((star) => {
     star.onclick = () => {
       i = stars.indexOf(star);
-      starRating = i + 1;
-      console.log("this many stars " + starRating)
+      bookRating = i + 1;
+      console.log("this many stars " + bookRating)
 
       if (star.className===starClassInactive) {
         for (i; i >= 0; --i) stars[i].className = starClassActive;
