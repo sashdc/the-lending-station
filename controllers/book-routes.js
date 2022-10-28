@@ -17,6 +17,7 @@ router.get("/:id", async (req, res) => {
         },
         {
             model: User,
+            attributes: ['username'],
         }         
       ],
     });

@@ -1,43 +1,41 @@
 <div container class="d-flex flex-column w-75 m-auto">
-<div class="d-flex flex-row w-100 m-auto">
-<div class="d-flex flex-column" id="book-cover">
-  <img src="/images/covers/{{book.id}}.jpg" class=" float-left rounded mx-auto d-block">
-</div>
-<div class="d-flex flex-column ml-5 mb-5" id="book-data">
-<h1>{{book.title}}</h1>
-<h2>{{book.author}}, {{book.year}}</h2>
-<p>{{book.synopsis}}
-</p>
-{{#if book.available}}<span class="badge badge-pill badge-success w-25" id="available-badge">Available</span>
-{{else}}
-<span class="badge badge-pill badge-danger w-25"id="available-badge">Not  available</span>
-{{/if}}
-{{!-- <h4>Borrowed Before?</h4> --}}
+  <div class="d-flex flex-row w-100 m-auto">
+    <div class="d-flex flex-column" id="book-cover">
+      <img src="/images/covers/{{book.id}}.jpg" class=" float-left rounded mx-auto d-block">
+    </div>
+    <div class="d-flex flex-column ml-5 mb-5" id="book-data">
+      <h1>{{book.title}}</h1>
+      <h2>{{book.author}}, {{book.year}}</h2>
+      <p>{{book.synopsis}}
+      </p>
+      {{#if book.available}}<span class="badge badge-pill badge-success w-25" id="available-badge">Available</span>
+      {{else}}
+      <span class="badge badge-pill badge-danger w-25" id="available-badge">Not available</span>
+      {{/if}}
+      {{!-- <h4>Borrowed Before?</h4> --}}
 
+      {{#if loggedIn}}
+      <form class="mt-5">
+        Leave a review
+        <div class="username">
+          as Username
+        </div>
+        <div class="form-group">
+          <textarea class="form-control w-100" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
 
-<form class="mt-5">
-  Leave a review
-  <div class="username">
-  as Username
+      </form>
+      {{/if}}
+    </div>
   </div>
-  <div class="form-group">
-    <textarea class="form-control w-100" id="exampleFormControlTextarea1" rows="3"></textarea>
-      </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-
-</form>
-</div>
-</div>
 
 
-<div class="d-flex flex-column w-100 mt-5 m-auto" id="reviews">
-     {{#each book.reviews as |review|}}
-        {{> reviews review }}
+  <div class="d-flex flex-column w-100 mt-5 m-auto" id="reviews">
+    {{#each book.reviews as |review|}}
+    {{> reviews review }}
     {{/each}}
-   
 
-
-
-</div>
-<a type="button" class="btn btn-primary btn-sm  m-auto mt-5 w-25" href="/library">Back</a>
+  </div>
+  <a type="button" class="btn btn-primary btn-sm  m-auto mt-5 w-25" href="/library">Back</a>
 </div>

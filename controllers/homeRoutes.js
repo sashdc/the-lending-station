@@ -47,6 +47,24 @@ router.get("/admin", async (req, res) => {
   }
 });
 
+router.get("/user", async (req, res) => {
+  try {
+    // Get all books 
+    const bookData = await Book.findAll();
+    console.log(bookData);
+    // Serialize data so the template can read it
+    const books = bookData.map((book) => book.get({ plain: true }));
+    console.log(books);
+    // Pass serialized data and session flag into template
+    res.render("user-dashboard", {
+      books, 
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // accessing library page
 router.get("/library", async (req, res) => {
   try {
@@ -66,34 +84,6 @@ router.get("/library", async (req, res) => {
   }
 });
 
-// accessing individualbook page
-// router.get("/book/:id", async (req, res) => {
-//   try {
-//     // Get all books and JOIN with user data
-//     const bookData = await Book.findOne({
-//       where: {
-//         id: req.params.id,
-//       },
-//       include: [
-//         {
-//           model: User,
-//           attributes: ["username"],
-//         },
-//       ],
-//     });
-//     // console.log(bookData);
-//     // Serialize data so the template can read it
-//     const book = bookData.get({ plain: true });
-//     console.log(book);
-//     // Pass serialized data and session flag into template
-//     res.render("single-book", {
-//       book,
-//       loggedIn: req.session.loggedIn,
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 
 
