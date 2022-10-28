@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const {User, Book, Review, BorrowHistory} = require('../../models');
 
-// book by id, maybe move to site route
 router.get('/:id', async (req, res) => {
     try {
         const bookData = await Book.findAll({ where: {id: req.params.id}, include: [{
@@ -22,14 +21,5 @@ router.get('/:id', async (req, res) => {
         res.status(500).json(err)
     }
 })
-
-// user & borrow history (for review authentication)
-
-//update book
-router.put('/')
-
-//del book
-
-//post reveiw
 
 module.exports = router

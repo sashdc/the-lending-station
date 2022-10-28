@@ -8,7 +8,7 @@ const udbRoutes = require('./user-db')
 router.use('/login', loginRoutes);
 router.use('/signup', signupRoutes);
 router.use('/adb', adbRoutes);
-// router.use('/book', bookRoutes);
+router.use('/book', bookRoutes);
 router.use('/udb', udbRoutes);
 
 module.exports = router;
