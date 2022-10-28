@@ -57,6 +57,19 @@ const bookData = [
         borrowed_user: 5,
         cover_link: 'placeholder'
     },
+    {
+        id: 5,
+        title: 'The Iliad',
+        year: 1999,
+        author: 'Homer, Rober Fagles (translator)',
+        isbn: 9780140275360,
+        synopsis: 'A translation of the ancient poem featuring the waning year of the Trojan war',
+        rating: 3.89,
+        available: false,
+        available_next: next,
+        borrowed_user: 2,
+        cover_link: 'placeholder'
+    }, 
     
 ]
 
