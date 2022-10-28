@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {User, Book, Review, BorrowHistory} = require('../../models');
+const {User, Book, Review, BorrowHistory, Cover} = require('../../models');
 
 let today = new Date ()
 
@@ -88,6 +88,11 @@ router.post('/:id/review', async (req, res) => {
     }catch (err) {
         res.status(500).json(err);
       }
+})
+
+router.get('/cheese', async(req,res) => {
+    const data = await Book.findAll({include: [{model: Cover}]})
+    res.json(data)
 })
 
 module.exports = router
