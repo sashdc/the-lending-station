@@ -9,7 +9,6 @@ const userData = [
         email: `thunderlordsdecree@gmail.com`,
         first_name: 'Samwell',
         last_name: 'Rogers',
-        borrowed_book: null,
         admin: true
     },
     {
@@ -19,7 +18,6 @@ const userData = [
         email: `psychicsurge@gmail.com`,
         first_name: 'Harbin',
         last_name: 'Matthews',
-        borrowed_book: 1,
         admin: false
     },
     {
@@ -29,7 +27,6 @@ const userData = [
         email: `justicekick@gmail.com`,
         first_name: 'Ethan',
         last_name: 'Fraiser',
-        borrowed_book: 2,
         admin: false
     },
     {
@@ -39,7 +36,6 @@ const userData = [
         email: `gohanblanco@gmail.com`,
         first_name: 'Leticia',
         last_name: 'Chen',
-        borrowed_book: null,
         admin: false
     },
     {
@@ -49,7 +45,6 @@ const userData = [
         email: `melonlord@gmail.com`,
         first_name: 'Sarah',
         last_name: 'Simmons',
-        borrowed_book: 4,
         admin: false
     },
 ]
