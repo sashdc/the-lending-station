@@ -17,13 +17,14 @@ const {User, Book, Review, BorrowHistory} = require('../../models');
 
 router.post('/signup', async (req, res) => {
     // create a new user
+    console.log("trying to sign up")
     try {
       const userData = await User.create({
         "username": req.body.username,
         "password": req.body.password,
         "email": req.body.email,
-        "first_name": req.body.first_name,
-        "last_name": req.body.last_name,
+        "first_name": req.body.firstname,
+        "last_name": req.body.lastname,
         "admin": false
       });
       
