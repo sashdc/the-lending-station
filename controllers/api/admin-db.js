@@ -30,7 +30,27 @@ router.post('/new-book', async (req, res) => {
             "cover_link": req.body.cover
         })
 
-        res.status(200).json(bookData)
+        req.session.save(() => {
+            req.session.book_id = bookData.dataValues.id
+            res.status(200).json(bookData)
+        })
+
+        
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
+router.post('/new-book-cover', async (req, res) => {
+    try {
+        let buff = new Buffer.from(req.file.buffer);
+        let b64im = bugg.toString('base64');
+        const imageData = await Image.create({
+            "image": b64im,
+            "book_id": req.session.book_id,
+        })
+
+        res.status(200).json(imageData);
     } catch (err) {
         res.status(500).json(err);
     }
