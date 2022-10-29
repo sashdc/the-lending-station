@@ -48,6 +48,7 @@ router.post('/new-book-cover', async (req, res) => {
         const imageData = await Image.create({
             "image": b64im,
             "book_id": req.session.book_id,
+            "type": req.file.mimetype
         })
 
         res.status(200).json(imageData);
