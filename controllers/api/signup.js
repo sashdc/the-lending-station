@@ -17,7 +17,7 @@ const {User, Book, Review, BorrowHistory} = require('../../models');
 
 router.post('/signup', async (req, res) => {
     // create a new user
-    console.log("trying to sign up")
+    console.log("--------------------------trying to sign up")
     try {
       const userData = await User.create({
         "username": req.body.username,
@@ -27,7 +27,6 @@ router.post('/signup', async (req, res) => {
         "last_name": req.body.lastname,
         "admin": false
       });
-      
       req.session.save(() => {
         req.session.loggedIn = true
         req.session.user_id = userData.dataValues.id

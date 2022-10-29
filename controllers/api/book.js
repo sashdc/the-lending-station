@@ -56,9 +56,9 @@ router.delete('/:id', async(req, res) => {
 router.post('/:id/review', async (req, res) => {
     try {
         const reviewData = await Review.create({
-            "content": req.body.content,
+            "content": req.body.review,
             "rating": req.body.rating,
-            "user_id": 2,
+            "user_id": req.session.user_id ,
             "book_id": req.params.id
         });
         res.status(200).json({message: `Successfully wrote review`})
