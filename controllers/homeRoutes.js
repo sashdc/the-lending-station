@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Book, User, Review } = require("../models");
+const { Book, User, Review, BorrowHistory } = require("../models");
 
 const sequelize = require('../config/connection');
 
@@ -60,13 +60,17 @@ router.get("/user", async (req, res) => {
   try {
     const userData = await User.findOne(
       {where: { id: req.session.user_id },
-      }
-    );
+      include: [
+             {
+          model: Book, BorrowHistory
+        },
+      ],
+    });  
+ 
       // Serialize data so the template can read it
     const user = userData.get({ plain: true });
     console.log(req.session.user_id)
-    console.log("trying t get user data!")
-    console.table(user);
+  console.log(user)
     console.table(userData)
     // Pass serialized data and session flag into template
     res.render("user-dashboard", {
