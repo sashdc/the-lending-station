@@ -35,7 +35,57 @@ const reviewData = [
         rating: 5,
         user_id: 5,
         book_id: 3
+    },
+    {
+        id: 6,
+        content: 'Lively and dramatic,a clear-eyed biography.',
+        rating: 5,
+        user_id: 5,
+        book_id: 3
+    },
+    {
+        id: 7,
+        content: 'I am really fascinated and dumbfounded by J.K. Rowling\'s imagination and creativity.',
+        rating: 4.8,
+        user_id: 3,
+        book_id: 6
+    },
+    {
+        id: 8,
+        content: 'I personally enjoyed this book.It is interesting to learn about how awfully weird the characters are, how they think and act.',
+        rating: 4.5,
+        user_id: 1,
+        book_id: 9
+    },
+    {
+        id: 9,
+        content: 'This book man. Tbh I thought it was a normal storyline at first but  later on the mystery.',
+        rating: 4.4,
+        user_id: 2,
+        book_id: 10
+    },
+    {
+        id: 10,
+        content: 'So fun and whimsical!.',
+        rating: 5,
+        user_id: 4,
+        book_id: 11
+    },
+    {
+        id: 11,
+        content: 'This book is great! The first words catch my attention! A grand story that mixes greek mythology with war! .',
+        rating: 5,
+        user_id: 2,
+        book_id: 1, 
+    },
+    {
+        id:12,
+        content: 'Possibly best book ever made . The poetry is just great. A real example of true literature!',
+        rating: 4,
+        user_id: 4,
+        book_id: 1
     }
+    
 ]
 
 const seedReviews = () => Review.bulkCreate(reviewData);

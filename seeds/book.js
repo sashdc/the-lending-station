@@ -89,7 +89,7 @@ const bookData = [
         year: 1952,
         author: 'Ernest Hemingway',
         isbn: 684801221,
-        synopsis: 'It is the story of an epic struggle between an old, seasoned fisherman Santiago and his life\'s greatest catch of fish.',
+        synopsis: 'It is the story of an epic struggle between an old, seasoned fisherman Santiago and his life\'s greatest catch of fish.',
         rating: 4.2,
         available: true,
         available_next: today,
