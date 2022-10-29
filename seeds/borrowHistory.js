@@ -57,7 +57,7 @@ const borrowHistoryData = [
         book_id: 10
     },
     {
-        id: 10,
+        id: 12,
         user_id: 4,
         book_id: 11
     },

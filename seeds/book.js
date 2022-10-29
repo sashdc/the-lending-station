@@ -182,9 +182,9 @@ const bookData = [
         isbn:984782869,
         synopsis: 'Learn how to uncover the hints and hidden details in a question, discover how to break down a problem into manageable chunks, develop techniques to unstick yourself when stuck.',
         rating:4.7,
-        available: true,
-        available_next: today,
-        borrowed_user:null,
+        available: false,
+        available_next: next,
+        borrowed_user:6,
         cover_link: 'placeholder'
     },
     {
@@ -195,9 +195,9 @@ const bookData = [
         isbn:9780156012195,
         synopsis: 'The Little Prince is an honest and beautiful story about loneliness, friendship, sadness, and love.',
         rating:4.3,
-        available: true,
-        available_next: today,
-        borrowed_user:null,
+        available:  false,
+        available_next: next,
+        borrowed_user:7,
         cover_link: 'placeholder'
     },
   

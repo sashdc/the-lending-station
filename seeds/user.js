@@ -52,6 +52,27 @@ const userData = [
         borrowed_book: 4,
         admin: false
     },
+    {
+        id: 6,
+        username: "kellyhanson",
+        password: bcrypt.hashSync('happyalways', 10),
+        email: `khanson@gmail.com`,
+        first_name: 'Kelly',
+        last_name: 'Hanson',
+        borrowed_book: 14,
+        admin: false
+    },
+    {
+        id: 7,
+        username: "charolotee",
+        password: bcrypt.hashSync('happyalways', 10),
+        email: `ctaylor@gmail.com`,
+        first_name: 'Charolotee',
+        last_name: 'Taylor',
+        borrowed_book: 15,
+        admin: false
+    },
+
 ]
 
 const seedUsers = () => User.bulkCreate(userData);
