@@ -1,10 +1,5 @@
-const router = require('express').Router();
-const {User, Book, Review, BorrowHistory} = require('../models');
-
-
-
-
-
+const router = require("express").Router();
+const { User, Book, Review, BorrowHistory } = require("../models");
 
 // book by id, maybe move to site route
 router.get("/:id", async (req, res) => {
@@ -16,9 +11,9 @@ router.get("/:id", async (req, res) => {
           model: Review,
         },
         {
-            model: User,
-            attributes: ['username'],
-        }         
+          model: User,
+          attributes: ["username"],
+        },
       ],
     });
     console.log(bookData);
@@ -29,15 +24,16 @@ router.get("/:id", async (req, res) => {
     const book = bookData.get({ plain: true });
     console.log(book);
     const reviews = bookData.reviews;
-    console.log("--------------" + reviews)
+    console.log("--------------" + reviews);
 
     req.session.save(() => {
       req.session.book_id = req.params.id;
 
       // res.json(book, reviews, userData)
       res.render("single-book", {
-        book, reviews,
-                loggedIn: req.session.loggedIn,
+        book,
+        reviews,
+        loggedIn: req.session.loggedIn,
         user_id: req.session.user_id,
         post_id: req.session.post_id,
       });
@@ -47,4 +43,4 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-module.exports = router
+module.exports = router;
