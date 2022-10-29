@@ -23,6 +23,9 @@ Cover.init(
             model: 'book',
             key: 'id'
         }
+    }, 
+    mimetype: {
+      type: DataTypes.STRING
     }
   },
   {
