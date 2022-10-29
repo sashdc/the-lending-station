@@ -15,13 +15,21 @@
       {{!-- <h4>Borrowed Before?</h4> --}}
 
       {{#if loggedIn}}
-      <form class="mt-5">
-        Leave a review
+      <form class="mt-5 .new-review-form">
+        Leave a review 
+         <div class="rating">
+         <i class="rating__star far fa-star"></i>
+         <i class="rating__star far fa-star"></i>
+         <i class="rating__star far fa-star"></i>
+         <i class="rating__star far fa-star"></i>
+         <i class="rating__star far fa-star"></i>
+   </div>
+
         <div class="username">
           as Username
         </div>
         <div class="form-group">
-          <textarea class="form-control w-100" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <textarea class="form-control w-100" id="review" rows="3"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
 
@@ -39,3 +47,5 @@
   </div>
   <a type="button" class="btn btn-primary btn-sm  m-auto mt-5 w-25" href="/library">Back</a>
 </div>
+
+  <script src="/js/book.js"></script>

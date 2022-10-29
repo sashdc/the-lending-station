@@ -6,7 +6,7 @@ const sequelize = require('../config/connection');
 
 // getall posts for home page
 router.get("/", async (req, res) => {
-      try{res.render("homepage");
+      try{res.render("homepage", {loggedIn: req.session.loggedIn});
 }catch (err) {
     res.status(500).json(err);
   }}
@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
 
 // accessing admin login page
 router.get("/adminlogin", (req, res) => {
-  try{res.render("adminlogin");
+  try{res.render("adminlogin", {loggedIn: req.session.loggedIn});
 }catch (err) {
     res.status(500).json(err);
   }}
@@ -22,7 +22,15 @@ router.get("/adminlogin", (req, res) => {
 
 // accessing user login page
 router.get("/userlogin", (req, res) => {
-  try{res.render("userlogin" );
+  try{res.render("userlogin", {loggedIn: req.session.loggedIn} );
+}catch (err) {
+    res.status(500).json(err);
+  }}
+);
+
+// adding new book page
+router.get("/addbook", (req, res) => {
+  try{res.render("new-book", {loggedIn: req.session.loggedIn} );
 }catch (err) {
     res.status(500).json(err);
   }}
