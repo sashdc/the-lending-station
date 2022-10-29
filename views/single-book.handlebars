@@ -1,7 +1,7 @@
 <div container class="d-flex flex-column w-75 m-auto">
   <div class="d-flex flex-row w-100 m-auto">
-    <div class="d-flex flex-column" id="book-cover">
-      <img src="/images/covers/{{book.id}}.jpg" class=" float-left rounded mx-auto d-block">
+    <div class="d-flex flex-column" id="book-cover" >
+      <img src="/images/covers/{{book.id}}.jpg" class=" float-left rounded mx-auto d-block" style="width:400px">
     </div>
     <div class="d-flex flex-column ml-5 mb-5" id="book-data">
       <h1>{{book.title}}</h1>
@@ -15,7 +15,7 @@
       {{!-- <h4>Borrowed Before?</h4> --}}
 
       {{#if loggedIn}}
-      <form class="mt-5 .new-review-form">
+      <form class="mt-5 new-review-form">
         Leave a review 
          <div class="rating">
          <i class="rating__star far fa-star"></i>
@@ -29,7 +29,7 @@
           as Username
         </div>
         <div class="form-group">
-          <textarea class="form-control w-100" id="review" rows="3"></textarea>
+          <textarea class="form-control w-100" id="reviewtext" rows="3"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
 

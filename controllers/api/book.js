@@ -53,13 +53,13 @@ router.delete('/:id', async(req, res) => {
 });
 
 //post review
-router.post('/:id/review', async (req, res) => {
+router.post('/review', async (req, res) => {
     try {
         const reviewData = await Review.create({
             "content": req.body.review,
-            "rating": req.body.rating,
+            // "rating": req.body.rating,
             "user_id": req.session.user_id ,
-            "book_id": req.params.id
+            "book_id": req.params.book_id
         });
         res.status(200).json({message: `Successfully wrote review`})
     }catch (err) {
