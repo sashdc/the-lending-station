@@ -61,7 +61,7 @@ router.post('/review', async (req, res) => {
             "user_id": req.session.user_id ,
             "book_id": req.body.book_id
         });
-        console.log("<><><><><><REVIEW><><><><><>" + review)
+        console.log("<><><><><><REVIEW><><><><><>" + reviewData)
         res.status(200).json({message: `Successfully wrote review`})
     }catch (err) {
         res.status(500).json(err);

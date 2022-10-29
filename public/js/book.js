@@ -34,10 +34,8 @@ const newFormHandler = async (event) => {
   ];
 
   console.log(book_id)
-  console.log("this is the rating being sent ot the route" + bookRating)
   const review = document.querySelector("#reviewtext").value.trim();
   console.log(review)
-// test only , fix and replace!!!
 
   if (review) {
         const response = await fetch(`/api/book/review`, {
@@ -47,6 +45,7 @@ const newFormHandler = async (event) => {
         "Content-Type": "application/json",
       },
     });
+   console.log(response);
     if (response.ok) {
       document.location.replace(`/book/${book_id}`);
     } else {
