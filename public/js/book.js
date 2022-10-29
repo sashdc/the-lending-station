@@ -2,11 +2,13 @@
 // star rating
 const ratingStars = [...document.getElementsByClassName("rating__star")];
 
+let bookRating;
+
 function executeRating(stars) {
   const starClassActive = "rating__star fas fa-star";
   const starClassInactive = "rating__star far fa-star";
   const starsLength = stars.length;
-  let bookRating;
+  
   let i;
   stars.map((star) => {
     star.onclick = () => {
@@ -32,20 +34,21 @@ const newFormHandler = async (event) => {
   ];
 
   console.log(book_id)
-
+  console.log("this is the rating being sent ot the route" + bookRating)
   const review = document.querySelector("#reviewtext").value.trim();
   console.log(review)
+// test only , fix and replace!!!
 
   if (review) {
         const response = await fetch(`/api/book/review`, {
       method: "POST",
-      body: JSON.stringify({ review, book_id }),
+      body: JSON.stringify({ review, book_id, bookRating }),
       headers: {
         "Content-Type": "application/json",
       },
     });
     if (response.ok) {
-      document.location.replace("/review");
+      document.location.replace(`/book/${book_id}`);
     } else {
       alert("Failed to add review for the book");
     }

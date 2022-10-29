@@ -57,10 +57,11 @@ router.post('/review', async (req, res) => {
     try {
         const reviewData = await Review.create({
             "content": req.body.review,
-            // "rating": req.body.rating,
+            "rating": req.body.bookRating,
             "user_id": req.session.user_id ,
-            "book_id": req.params.book_id
+            "book_id": req.body.book_id
         });
+        console.log("<><><><><><REVIEW><><><><><>" + review)
         res.status(200).json({message: `Successfully wrote review`})
     }catch (err) {
         res.status(500).json(err);
