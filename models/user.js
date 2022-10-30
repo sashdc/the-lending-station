@@ -37,10 +37,12 @@ User.init(
     },
     first_name: {
       type: DataTypes.STRING,
+      unique: false,
       allowNull: false,
     },
     last_name: {
       type: DataTypes.STRING,
+      unique: false,
       allowNull: false,
     },
     admin: {
