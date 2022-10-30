@@ -72,7 +72,7 @@ const userData = [
         borrowed_book: 15,
         admin: false
     },
-
+     
 ]
 
 const seedUsers = () => User.bulkCreate(userData);

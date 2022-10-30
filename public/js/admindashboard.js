@@ -37,6 +37,46 @@ const newFormHandler = async (event) => {
         }
       };
     
+       
+const picture = document.querySelector('#picture').value.trim();
+
+
+if (picture) {
+       const response = await fetch(`/api/books`, {
+         method: 'POST',
+         body: JSON.stringify({ picture }),
+         headers: {
+           'Content-Type': 'application/json',
+         },
+       });
+       if (response.ok) {
+           document.location.replace('/picture');
+         } else {
+           alert('Failed to upload the picture for the book');
+         }
+       };
+     
+
+
+     const addButtonHandler = async (event) => {
+       if (event.target.hasAttribute('data-id')) {
+         const id = event.target.getAttribute('data-id');
+     
+         const response = await fetch(`/api/picture/${id}`, {
+           method: 'POST',
+         });
+     
+         if (response.ok) {
+           document.location.replace('/picture');
+         } else {
+           alert('Failed to upload the picture for the book');
+         }
+       }
+     };
+
+document
+     .querySelector('.new-uploadpic-form')
+     .addEventListener('upload', newFormHandler);
       
       
       document
