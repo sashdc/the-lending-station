@@ -16,16 +16,13 @@ router.get("/:id", async (req, res) => {
         },
       ],
     });
-    console.log(bookData);
-    console.table(bookData)
+
     // const userData = await BorrowHistory.findOne({
     //   where: { book_id: req.params.id },
     // });
 
     const book = bookData.get({ plain: true });
-    console.log(book);
     const reviews = bookData.reviews;
-    console.log("--------------" + reviews);
 
     req.session.save(() => {
       req.session.book_id = req.params.id;

@@ -25,29 +25,9 @@ const newFormHandler = async (event) => {
       }
     };
 
-    // const delButtonHandler = async (event) => {
-    //   console.log("trying to delete the book")
-    //     if (confirm('Are you sure you want to delete this book?')){
-    //       const response = await fetch(`/api/book/${id}`, {
-    //         method: 'DELETE',
-    //       });
-          
-    //       if (response.ok) {
-    //         document.location.replace('/dashboard');
-    //       } else {
-    //         alert('Failed to the delete book');
-    //       }
-    //     }
-    //   };
-    //   document
-    //   .querySelector('.delete-book')
-    //   .addEventListener('click', delButtonHandler);
-      
+    
       
       document
         .querySelector('.new-book-form')
         .addEventListener('submit', newFormHandler);
       
-      // document
-      //   .querySelector('.delete-book')
-      //   .addEventListener('click', delButtonHandler);

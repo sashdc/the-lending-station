@@ -39,8 +39,8 @@
       {{/unless}}
           {{#if admin}}
 <button type="button" class="btn btn-sm mt-5 btn-outline-info">Edit Book</button>
-<button type="button" class="btn btn-sm mt-3 btn-danger delete-book">Delete Book</button>
-
+<button type="button" class="btn btn-sm mt-3 btn-outline-danger delete-book">Delete Book</button>
+<a button type="button" class="btn btn-sm mt-3 btn-outline-success delete-book" href="/admin">Back to admin dashboard</a>
 
       {{/if}}
     </div>
@@ -55,7 +55,9 @@
     {{/each}}
 
   </div>
-  <a type="button" class="btn btn-primary btn-sm  m-auto mt-5 w-25" href="/library">Back</a>
+  <a type="button" class="btn btn-primary btn-sm  m-auto mt-5 w-25" href="/library">Back to the Library</a>
 </div>
+
+
 
   <script src="/js/book.js"></script>

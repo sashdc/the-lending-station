@@ -34,7 +34,7 @@ router.put('/:id', async (req, res) => {
 
 //del book
 router.delete('/:id', async(req, res) => {
-  console.log(`trying to delete book id ${req.params.id} in the routes`)
+
     try {
         const bookData = await Book.destroy({
           where: {

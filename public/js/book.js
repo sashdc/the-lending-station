@@ -56,6 +56,7 @@ const newFormHandler = async (event) => {
   }
 };
 
+// adding a book image
 const addButtonHandler = async (event) => {
   if (event.target.hasAttribute("data-id")) {
     const id = event.target.getAttribute("data-id");
@@ -85,9 +86,9 @@ const delButtonHandler = async (event) => {
       });
       
       if (response.ok) {
-        document.location.replace('/library');
+        document.location.replace('/admin');
       } else {
-        alert('Failed to the delete book');
+        alert('Failed to delete the book');
       }
     }
   };
