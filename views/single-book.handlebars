@@ -1,135 +1,51 @@
 <div container class="d-flex flex-column w-75 m-auto">
-<div class="d-flex flex-row w-75 m-auto">
-<div class="d-flex flex-column" id="book-cover">
-  <img src="../../public/images/covers/4.jpg" class=" float-left rounded mx-auto d-block">
-</div>
-<div class="d-flex flex-column ml-5" id="book-data">
-<h1>Book Title, Year</h1>
-<h2>Author Name</h2>
-<p>A rural community in southeast Tennessee is tested when a teenage girl goes missing. Deputy Galloway suspects his girlfriend's husband of foul play and launches an investigation. Nestled in the nearby Smoky Mountains, a bluegrass tavern may hold clues to the teen's fate. Yet the hills don't talk. Galloway's suspect's worst crime may be in allowing circumstance to determine reality, leaving others to grapple with conjecture. Through laughter, love, and loss, Galloway must discover his suspect's elusive way over women so that he an bring justice for the missing girl and win back his love's heart. After all, no one missing is lost forever.
-</p>
-<span class="badge badge-pill badge-success w-25" id="available-badge">Available</span>
-<span class="badge badge-pill badge-danger w-25"id="available-badge">Not  available</span>
-<h4>Borrowed Before?</h4>
-
-
-<form>
-  Leave a review
-  <div class="username">
-  as Username
-  </div>
-  <div class="form-group">
-    <textarea class="form-control w-100" id="exampleFormControlTextarea1" rows="3"></textarea>
-      </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-
-</form>
-</div>
-</div>
-
-
-<div class="d-flex flex-column w-75 mt-5 m-auto" id="reviews">
-<div class="card m-3 shadow">
-  <div class="card-body">
-    <div class="d-flex flex-start">
-     
-      <div class="w-100">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <h6 class="text-primary fw-bold mb-0">
-           <b> {{user.username}}</b>
-            <span class="text justify-content-between ms-2"><i>{{comment_text}}</i></span>
-          </h6>
-          <p class="mb-0">{{format_date createdAt}}</p>
-        </div>
-        <div class="d-flex justify-content-between align-items-center">
-     
-          <div class="d-flex flex-row">
-            <i class="fas fa-star text-warning me-2"></i>
-            <i class="far fa-check-circle" style="color: #aaa;"></i>
-            
-          </div>
-        </div>
-      </div>
+  <div class="d-flex flex-row w-100 m-auto">
+    <div class="d-flex flex-column" id="book-cover">
+      <img src="/images/covers/{{book.id}}.jpg" class=" float-left rounded mx-auto d-block">
     </div>
-    
-  </div>
-</div>
-<div class="card m-3  shadow">
-  <div class="card-body">
-    <div class="d-flex flex-start">
-     
-      <div class="w-100">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <h6 class="text-primary fw-bold mb-0">
-           <b> {{user.username}}</b>
-            <span class="text justify-content-between ms-2"><i>{{comment_text}}</i></span>
-          </h6>
-          <p class="mb-0">{{format_date createdAt}}</p>
+    <div class="d-flex flex-column ml-5 mb-5" id="book-data">
+      <h1>{{book.title}}</h1>
+      <h2>{{book.author}}, {{book.year}}</h2>
+      <p>{{book.synopsis}}
+      </p>
+      {{#if book.available}}<span class="badge badge-pill badge-success w-25" id="available-badge">Available</span>
+      {{else}}
+      <span class="badge badge-pill badge-danger w-25" id="available-badge">Not available</span>
+      {{/if}}
+      {{!-- <h4>Borrowed Before?</h4> --}}
+
+      {{#if loggedIn}}
+      <form class="mt-5 .new-review-form">
+        Leave a review 
+         <div class="rating">
+         <i class="rating__star far fa-star"></i>
+         <i class="rating__star far fa-star"></i>
+         <i class="rating__star far fa-star"></i>
+         <i class="rating__star far fa-star"></i>
+         <i class="rating__star far fa-star"></i>
+   </div>
+
+        <div class="username">
+          as Username
         </div>
-        <div class="d-flex justify-content-between align-items-center">
-     
-          <div class="d-flex flex-row">
-            <i class="fas fa-star text-warning me-2"></i>
-            <i class="far fa-check-circle" style="color: #aaa;"></i>
-            
-          </div>
+        <div class="form-group">
+          <textarea class="form-control w-100" id="review" rows="3"></textarea>
         </div>
-      </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+      </form>
+      {{/if}}
     </div>
-    
   </div>
-</div>
-<div class="card m-3  shadow">
-  <div class="card-body">
-    <div class="d-flex flex-start">
-     
-      <div class="w-100">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <h6 class="text-primary fw-bold mb-0">
-           <b> {{user.username}}</b>
-            <span class="text justify-content-between ms-2"><i>{{comment_text}}</i></span>
-          </h6>
-          <p class="mb-0">{{format_date createdAt}}</p>
-        </div>
-        <div class="d-flex justify-content-between align-items-center">
-     
-          <div class="d-flex flex-row">
-            <i class="fas fa-star text-warning me-2"></i>
-            <i class="far fa-check-circle" style="color: #aaa;"></i>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    
+
+
+  <div class="d-flex flex-column w-100 mt-5 m-auto" id="reviews">
+    {{#each book.reviews as |review|}}
+    {{> reviews review }}
+    {{/each}}
+
   </div>
-</div>
-<div class="card m-3  shadow">
-  <div class="card-body">
-    <div class="d-flex flex-start">
-     
-      <div class="w-100">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <h6 class="text-primary fw-bold mb-0">
-           <b> {{user.username}}</b>
-            <span class="text justify-content-between ms-2"><i>{{comment_text}}</i></span>
-          </h6>
-          <p class="mb-0">{{format_date createdAt}}</p>
-        </div>
-        <div class="d-flex justify-content-between align-items-center">
-     
-          <div class="d-flex flex-row">
-            <i class="fas fa-star text-warning me-2"></i>
-            <i class="far fa-check-circle" style="color: #aaa;"></i>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    
-  </div>
+  <a type="button" class="btn btn-primary btn-sm  m-auto mt-5 w-25" href="/library">Back</a>
 </div>
 
-</div>
-
-</div>
+  <script src="/js/book.js"></script>

@@ -1,34 +1,6 @@
 const router = require('express').Router();
 const {User, Book, Review, BorrowHistory} = require('../../models');
 
-router.get ('/', async (req, res) => {
-    try {
-        const userData = await User.findAll({include: [
-            { model: Book, attributes: ['title', 'author', 'rating'] },
-            { model: Review, attributes: ['content', 'book_id'] },
-        ]
-        })
-        res.status(200).json(userData);
-    } catch (err) {
-        res.status(500).json(err)
-    }
-})
-
-router.post('/signup', async (req, res) => {
-    // create a new user
-    try {
-      const userData = await User.create(req.body);
-      
-      req.session.save(() => {
-        req.session.loggedIn = true
-        req.session.user_id = userData.dataValues.id
-        res.status(200).json(userData);
-      })
-    } catch (err) {
-      res.status(500).json(err);
-    }
-});
-  
 router.post('/login', async (req, res) => {
     try {
       const dbUserData = await User.findOne({
@@ -43,6 +15,8 @@ router.post('/login', async (req, res) => {
         return;
       }
       const validPassword = dbUserData.checkPassword(req.body.password);
+      console.log(validPassword)
+      console.log("<><><><><><><><><><><><" + dbUserData)
       if (!validPassword) {
         res
           .status(400)
@@ -52,6 +26,7 @@ router.post('/login', async (req, res) => {
       req.session.save(() => {
         req.session.loggedIn = true
         req.session.user_id = dbUserData.dataValues.id
+        req.session.admin = dbUserData.dataValues.admin
         res.status(200).json({ user: dbUserData, message: 'You are now logged in!' });
       });
   
@@ -60,5 +35,16 @@ router.post('/login', async (req, res) => {
       res.status(500).json(err);
     }
 });
+
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+
 
 module.exports = router
