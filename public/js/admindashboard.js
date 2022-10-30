@@ -26,6 +26,7 @@ const newFormHandler = async (event) => {
     };
 
     const delButtonHandler = async (event) => {
+      console.log("trying to delete the book")
         if (confirm('Are you sure you want to delete this book?')){
           const response = await fetch(`/api/book/${id}`, {
             method: 'DELETE',
@@ -46,5 +47,5 @@ const newFormHandler = async (event) => {
         .addEventListener('submit', newFormHandler);
       
       document
-        .querySelector('.book-history')
+        .querySelector('.delete-book')
         .addEventListener('click', delButtonHandler);

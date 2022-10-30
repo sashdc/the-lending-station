@@ -8,7 +8,7 @@ router.get("/:id", async (req, res) => {
       where: { id: req.params.id },
       include: [
         {
-          model: Review,
+          model: Review
         },
         {
           model: User,
@@ -17,6 +17,7 @@ router.get("/:id", async (req, res) => {
       ],
     });
     console.log(bookData);
+    console.table(bookData)
     // const userData = await BorrowHistory.findOne({
     //   where: { book_id: req.params.id },
     // });
@@ -34,6 +35,7 @@ router.get("/:id", async (req, res) => {
         book,
         reviews,
         loggedIn: req.session.loggedIn,
+        admin:req.session.admin, 
         user_id: req.session.user_id,
         post_id: req.session.post_id,
       });

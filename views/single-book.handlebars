@@ -13,7 +13,8 @@
       <span class="badge badge-pill badge-danger w-25" id="available-badge">Not available</span>
       {{/if}}
       {{!-- <h4>Borrowed Before?</h4> --}}
-
+      {{!-- only show radd review option for logged in --}}
+      {{#unless admin}}
       {{#if loggedIn}}
       <form class="mt-5 new-review-form">
         Leave a review 
@@ -35,7 +36,16 @@
 
       </form>
       {{/if}}
+      {{/unless}}
+          {{!-- {{#if admin}}
+<button type="button" class="btn btn-sm mt-5 btn-outline-info">Edit Book</button>
+<button type="button" class="btn btn-sm mt-3 btn-danger delete-book">Delete Book</button>
+
+
+      {{/if}} --}}
     </div>
+     {{!-- delete and edit book button for admin --}}
+ 
   </div>
 
 
