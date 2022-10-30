@@ -51,7 +51,7 @@ router.get("/admin", async (req, res) => {
     // Pass serialized data and session flag into template
     res.render("admin-dashboard", {
       books,
-      loggedIn: req.session.loggedIn,
+      loggedIn: req.session.loggedIn, admin:req.session.admin 
     });
   } catch (err) {
     res.status(500).json(err);

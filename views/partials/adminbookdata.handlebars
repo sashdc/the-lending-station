@@ -1,11 +1,13 @@
 <tr>
   <th scope="row">{{id}}</th>
-  <td>{{title}}</td>
+  <td><a class = "btn btn-sm" href="/book/{{id}}">{{title}}</a></td>
   <td>{{author}}</td>
   <td>{{#if available}}Yes{{else}}No{{/if}}</td>
   <td>{{available_next}}</td>
   <td>{{borrowed_user}}</td>
-  <td><i class="fa-solid fa-pen-to-square"></i></td>
+  {{!-- <td><i class="fa-solid fa-pen-to-square"></i></td>
   <td><i class="fa fa-trash delete-book" aria-hidden="true"></i>
-  </td>
+  </td> --}}
 </tr>
+
+
