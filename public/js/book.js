@@ -26,6 +26,8 @@ function executeRating(stars) {
 }
 executeRating(ratingStars);
 
+
+// adding a review & rating
 const newFormHandler = async (event) => {
   event.preventDefault();
 
@@ -70,6 +72,29 @@ const addButtonHandler = async (event) => {
   }
 };
 
+
+// delete a book when admin
+const delButtonHandler = async (event) => {
+  const id = window.location.toString().split("/")[
+    window.location.toString().split("/").length - 1
+  ];
+  console.log(`trying to delete book id = ${id}`)
+    if (confirm('Are you sure you want to delete this book?')){
+      const response = await fetch(`/api/book/${id}`, {
+        method: 'DELETE',
+      });
+      
+      if (response.ok) {
+        document.location.replace('/library');
+      } else {
+        alert('Failed to the delete book');
+      }
+    }
+  };
+  document
+  .querySelector('.delete-book')
+  .addEventListener('click', delButtonHandler);
+  
 
 
 document
