@@ -67,3 +67,15 @@ a:active { text-decoration: none; }
     filter: drop-shadow(1px 1px 4px gold);
  }
 
+ .fa-trash{
+    color:rgb(241, 103, 103)
+ }
+ .fa-pen-to-square{
+    color: green;
+ }
+
+
+ #delete-review{
+   position: absolute;
+   right: 5%;
+ }

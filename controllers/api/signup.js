@@ -23,8 +23,8 @@ router.post('/signup', async (req, res) => {
         "username": req.body.username,
         "password": req.body.password,
         "email": req.body.email,
-        "first_name": req.body.firstname,
-        "last_name": req.body.lastname,
+        "first_name": req.body.first_name,
+        "last_name": req.body.last_name,
         "admin": false
       });
       req.session.save(() => {

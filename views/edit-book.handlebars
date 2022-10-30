@@ -1,22 +1,28 @@
-<form class="w-75 m-auto new-book-form">
+<form class="w-75 m-auto edit-book-form">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="title">Book ID</label>
+      <input type="title" class="form-control" id="book-id" value="{{book.id}}">
+    </div>
+    </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="title">Book Name</label>
-      <input type="title" class="form-control" id="title" placeholder="book name">
+      <input type="title" class="form-control" id="title" value="{{book.title}}">
     </div>
     <div class="form-group col-md-6">
       <label for="author">Author</label>
-      <input type="author" class="form-control" id="author" placeholder="author">
+      <input type="author" class="form-control" id="author" value="{{book.author}}">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="year">Year published</label>
-      <input type="year" class="form-control" id="year" placeholder="year">
+      <input type="year" class="form-control" id="year" value="{{book.year}}">
     </div>
     <div class="form-group col-md-6">
       <label for="isbn">ISBN#</label>
-      <input type="isbn" class="form-control" id="isbn" placeholder="ISBN#">
+      <input type="isbn" class="form-control" id="isbn" value="{{book.isbn}}">
     </div>
       <div class="form-group">
     <label for="exampleFormControlFile1">Upload Book Cover</label>
@@ -26,10 +32,10 @@
   
   <div class="form-group">
     <label for="synopsis">Synopsis</label>
-    <textarea class="form-control" id="synopsis" placeholder="a brief description" rows="6"></textarea>
+    <textarea class="form-control" id="synopsis" rows="6">{{book.synopsis}}</textarea>
   </div>
   
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
-  <script src="/js/admindashboard.js"></script>
+  <script src="/js/edit-book.js"></script>

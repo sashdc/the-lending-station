@@ -1,10 +1,5 @@
-const router = require('express').Router();
-const {User, Book, Review, BorrowHistory} = require('../models');
-
-
-
-
-
+const router = require("express").Router();
+const { User, Book, Review, BorrowHistory } = require("../models");
 
 // book by id, maybe move to site route
 router.get("/:id", async (req, res) => {
@@ -13,31 +8,31 @@ router.get("/:id", async (req, res) => {
       where: { id: req.params.id },
       include: [
         {
-          model: Review,
+          model: Review
         },
         {
-            model: User,
-            attributes: ['username'],
-        }         
+          model: User,
+          attributes: ["username"],
+        },
       ],
     });
-    console.log(bookData);
+
     // const userData = await BorrowHistory.findOne({
     //   where: { book_id: req.params.id },
     // });
 
     const book = bookData.get({ plain: true });
-    console.log(book);
     const reviews = bookData.reviews;
-    console.log("--------------" + reviews)
 
     req.session.save(() => {
       req.session.book_id = req.params.id;
 
       // res.json(book, reviews, userData)
       res.render("single-book", {
-        book, reviews,
-                loggedIn: req.session.loggedIn,
+        book,
+        reviews,
+        loggedIn: req.session.loggedIn,
+        admin:req.session.admin, 
         user_id: req.session.user_id,
         post_id: req.session.post_id,
       });
@@ -47,4 +42,30 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-module.exports = router
+
+// getting book to edit by id - loading all current info into the edit form
+router.get("/edit/:id", async (req, res) => {
+  console.log("trying to edit the book but in the route bit")
+  try {
+    const bookData = await Book.findOne({
+      where: { id: req.params.id },
+         });
+
+    const book = bookData.get({ plain: true });
+
+    req.session.save(() => {
+      req.session.book_id = req.params.id;
+
+      res.render("edit-book", {
+        book,
+        loggedIn: req.session.loggedIn,
+        admin:req.session.admin, 
+          });
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+module.exports = router;

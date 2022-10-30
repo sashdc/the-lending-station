@@ -38,6 +38,13 @@ const newFormHandler = async (event) => {
       };
     
       
+
+// display borrowed book
+  // grab the element to display in 
+  // iterate over all books
+  // if the borrowed_user = user_id
+  // display that book
+  const borrowedBook = async 
       
       document
         .querySelector('.new-book-form')
