@@ -112,9 +112,9 @@ const delButtonHandler = async (event) => {
     
 //   };
 
-  document
-  .querySelector('.edit-book')
-  .addEventListener('click', editButtonHandler);
+  // document
+  // .querySelector('.edit-book')
+  // .addEventListener('click', editButtonHandler);
 
   document
   .querySelector('.delete-book')
