@@ -73,7 +73,6 @@ const addButtonHandler = async (event) => {
   }
 };
 
-
 // delete a book when admin
 const delButtonHandler = async (event) => {
   const id = window.location.toString().split("/")[
@@ -93,28 +92,29 @@ const delButtonHandler = async (event) => {
     }
   };
 
-// edit a book when admin
-// const editButtonHandler = async (event) => {
-//   const id = window.location.toString().split("/")[
-//     window.location.toString().split("/").length - 1
-//   ];
-//   console.log(`trying to edit book id = ${id}`)
-    
-//       const response = await fetch(`/api/book/edit/${id}`, {
-//         method: 'GET ',
-//       });
-      
-//       if (response.ok) {
-//         alert("Let's edit");
-//       } else {
-//         alert('Failed to edit the book');
-//       }
-    
-//   };
 
-  // document
-  // .querySelector('.edit-book')
-  // .addEventListener('click', editButtonHandler);
+  // delete a review when admin
+const delReviewHandler = async (event) => {
+  const id = window.location.toString().split("/")[
+    window.location.toString().split("/").length - 1
+  ];
+  console.log(`trying to delete book id = ${id}`)
+    if (confirm('Are you sure you want to delete this book?')){
+      const response = await fetch(`/api/book/${id}`, {
+        method: 'DELETE',
+      });
+      
+      if (response.ok) {
+        document.location.replace('/admin');
+      } else {
+        alert('Failed to delete the book');
+      }
+    }
+  };
+
+  document
+  .querySelector('.delete-review')
+  .addEventListener('click', delReviewHandler);
 
   document
   .querySelector('.delete-book')

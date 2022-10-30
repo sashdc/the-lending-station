@@ -3,7 +3,7 @@ const { Book, User, Review, BorrowHistory } = require("../models");
 
 const sequelize = require("../config/connection");
 
-// getall posts for home page
+// get all posts for home page
 router.get("/", async (req, res) => {
   try {
     res.render("homepage", { loggedIn: req.session.loggedIn, admin:req.session.admin });
@@ -79,7 +79,7 @@ router.get("/user", async (req, res) => {
     // Pass serialized data and session flag into template
     res.render("user-dashboard", {
       user,
-      loggedIn: req.session.loggedIn,
+      loggedIn: req.session.loggedIn, admin:req.session.admin
     });
   } catch (err) {
     res.status(500).json(err);
@@ -98,7 +98,7 @@ router.get("/library", async (req, res) => {
     // Pass serialized data and session flag into template
     res.render("library", {
       books,
-      loggedIn: req.session.loggedIn,
+      loggedIn: req.session.loggedIn, admin:req.session.admin
     });
   } catch (err) {
     res.status(500).json(err);

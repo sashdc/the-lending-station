@@ -43,7 +43,7 @@ router.get("/:id", async (req, res) => {
 });
 
 
-// getting book to edit by id - loading all current info into 
+// getting book to edit by id - loading all current info into the edit form
 router.get("/edit/:id", async (req, res) => {
   console.log("trying to edit the book but in the route bit")
   try {

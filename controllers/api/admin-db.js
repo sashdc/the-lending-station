@@ -14,7 +14,7 @@ router.get('/book', async (req,res) => {
     }
 })
 
-// post book
+// post book -cover_link is fixed value, fix before deployment
 router.post('/new-book', async (req, res) => {
     console.log("trying to add a new book")
 
@@ -33,7 +33,6 @@ router.post('/new-book', async (req, res) => {
             
             // req.body.cover
         })
-        console.log("><><><><><><><><><" + bookData)
 
         req.session.save(() => {
             req.session.book_id = bookData.dataValues.id

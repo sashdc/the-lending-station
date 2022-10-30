@@ -73,3 +73,9 @@ a:active { text-decoration: none; }
  .fa-pen-to-square{
     color: green;
  }
+
+
+ #delete-review{
+   position: absolute;
+   right: 5%;
+ }
