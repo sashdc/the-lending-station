@@ -67,6 +67,8 @@ router.post('/:id/review', async (req, res) => {
       }
 })
 
+
+//delete review
 router.delete('/review/:id', async(req,res) => {
     const reviewData = await Review.delete({where: {"id": req.params.id}})
     if (!reviewData) {
