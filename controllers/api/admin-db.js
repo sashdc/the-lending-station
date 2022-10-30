@@ -16,6 +16,8 @@ router.get('/book', async (req,res) => {
 
 // post book
 router.post('/new-book', async (req, res) => {
+    console.log("trying to add a new book")
+
     try {
         let bookData = await Book.create({
             "title": req.body.title,
@@ -27,8 +29,11 @@ router.post('/new-book', async (req, res) => {
             "available": true,
             "available_next": today,
             "borrowed_user": null,
-            "cover_link": req.body.cover
+            "cover_link": 7
+            
+            // req.body.cover
         })
+        console.log("><><><><><><><><><" + bookData)
 
         req.session.save(() => {
             req.session.book_id = bookData.dataValues.id

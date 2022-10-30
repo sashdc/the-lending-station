@@ -7,11 +7,10 @@ const newFormHandler = async (event) => {
     const isbn = document.querySelector('#isbn').value.trim();
     const author = document.querySelector('#author').value.trim();
     const cover = document.querySelector('#cover').value.trim();
-
-    if (title && year && synopsis && isbn) {
-        const response = await fetch(`/api/books`, {
+    if (title && year && synopsis && isbn && author ) {
+        const response = await fetch(`/api/adb/new-book`, {
           method: 'POST',
-          body: JSON.stringify({ title,year,synopsis,isbn,author, cover }),
+          body: JSON.stringify({ title,year,synopsis,isbn,author }),
           headers: {
             'Content-Type': 'application/json',
           },
