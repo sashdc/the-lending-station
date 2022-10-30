@@ -6,6 +6,8 @@ let today = new Date ()
 
 //update book
 router.put('/:id', async (req, res) => {
+  console.log("trying to edit the book")
+
     try {
         const bookData = await Book.update(
             {
@@ -68,6 +70,8 @@ router.post('/review', async (req, res) => {
         res.status(500).json(err);
       }
 })
+
+
 
 router.get('/cheese', async(req,res) => {
     const data = await Book.findAll({include: [{model: Cover}]})

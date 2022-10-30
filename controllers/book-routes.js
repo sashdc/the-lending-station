@@ -42,4 +42,30 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+
+// getting book to edit by id - loading all current info into 
+router.get("/edit/:id", async (req, res) => {
+  console.log("trying to edit the book but in the route bit")
+  try {
+    const bookData = await Book.findOne({
+      where: { id: req.params.id },
+         });
+
+    const book = bookData.get({ plain: true });
+
+    req.session.save(() => {
+      req.session.book_id = req.params.id;
+
+      res.render("edit-book", {
+        book,
+        loggedIn: req.session.loggedIn,
+        admin:req.session.admin, 
+          });
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 module.exports = router;

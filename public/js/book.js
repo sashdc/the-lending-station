@@ -92,11 +92,33 @@ const delButtonHandler = async (event) => {
       }
     }
   };
+
+// edit a book when admin
+// const editButtonHandler = async (event) => {
+//   const id = window.location.toString().split("/")[
+//     window.location.toString().split("/").length - 1
+//   ];
+//   console.log(`trying to edit book id = ${id}`)
+    
+//       const response = await fetch(`/api/book/edit/${id}`, {
+//         method: 'GET ',
+//       });
+      
+//       if (response.ok) {
+//         alert("Let's edit");
+//       } else {
+//         alert('Failed to edit the book');
+//       }
+    
+//   };
+
+  document
+  .querySelector('.edit-book')
+  .addEventListener('click', editButtonHandler);
+
   document
   .querySelector('.delete-book')
   .addEventListener('click', delButtonHandler);
-  
-
 
 document
   .querySelector(".new-review-form")
