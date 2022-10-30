@@ -68,7 +68,7 @@ router.post('/:id/review', async (req, res) => {
 })
 
 router.delete('/review/:id', async(req,res) => {
-    const reviewData = await Book.delete({where: {"id": req.params.id}})
+    const reviewData = await Review.delete({where: {"id": req.params.id}})
     if (!reviewData) {
       res.status(404).json({ message: 'No review found'})
       return;
