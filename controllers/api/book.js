@@ -62,21 +62,25 @@ router.post('/:id/review', async (req, res) => {
             "book_id": req.params.id
         });
         res.status(200).json({message: `Successfully wrote review`})
-    }catch (err) {
+    } catch (err) {
         res.status(500).json(err);
-      }
+    }
 })
 
 
 //delete review
 router.delete('/review/:id', async(req,res) => {
+  try {  
     const reviewData = await Review.delete({where: {"id": req.params.id}})
-    if (!reviewData) {
-      res.status(404).json({ message: 'No review found'})
-      return;
-    }
+      if (!reviewData) {
+        res.status(404).json({ message: 'No review found'})
+        return;
+      }
 
-    res.status(200).json({message: 'Successfully deleted review'})
-})
+      res.status(200).json({message: 'Successfully deleted review'})
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  })
 
 module.exports = router
