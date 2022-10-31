@@ -66,7 +66,7 @@ router.get("/user", async (req, res) => {
       include: [
         {
           model: Book,
-          BorrowHistory,
+          BorrowHistory
         },
       ],
     });
@@ -75,7 +75,7 @@ router.get("/user", async (req, res) => {
     const user = userData.get({ plain: true });
     console.log(req.session.user_id);
     console.log(user);
-    console.table(user);
+    console.table(user.BorrowHistory);
     // Pass serialized data and session flag into template
     res.render("user-dashboard", {
       user,
