@@ -14,7 +14,6 @@ router.put('/:id', async (req, res) => {
             "synopsis": req.body.synopsis,
             "author": req.body.author,
             "isbn": req.body.isbn,
-            "rating": 0,
             "available": req.body.available,
             "available_next": today,
             "borrowed_user": req.body.borrowed_user,
@@ -68,6 +67,21 @@ router.post('/review', async (req, res) => {
     }
 })
 
+//get review ratings
+
+router.get('/ratings', async (req, res) => {
+  const ratings = await Book.findOne({include: {model: Review, attributes: ['rating']}, where: {id: req.session.book_id}})
+  let e = ratings.reviews.map((f) => f.rating)
+  res.status(200).json({e})
+})
+
+//update rating
+router.put('/review/update', async (req, res) => {
+  const bookData = await Book.update({"rating": req.body},
+    {where: {id: req.session.book_id}})
+
+    res.status(200).json({message: 'successfully updated rating'})
+})
 
 //delete review
 router.delete('/review/:id', async(req,res) => {
