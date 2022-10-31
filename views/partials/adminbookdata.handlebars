@@ -4,7 +4,7 @@
   <td>{{author}}</td>
   <td>{{#if available}}Yes{{else}}No{{/if}}</td>
   <td>{{available_next}}</td>
-  <td>{{borrowed_user}}</td>
+  <td>{{#if available}}-{{else}}{{borrowed_user}}{{/if}}</td>
   {{!-- <td><i class="fa-solid fa-pen-to-square"></i></td>
   <td><i class="fa fa-trash delete-book" aria-hidden="true"></i>
   </td> --}}

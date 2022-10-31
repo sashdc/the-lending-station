@@ -14,7 +14,22 @@ const editFormHandler = async (event) => {
     const borrowed_user = document.querySelector('#borrower-id').value.trim();
 
     console.log(`trying to edit book ${id} `)
-    if (title && year && synopsis && isbn && author && available && borrowed_user ) {
+    if (title && year && synopsis && isbn && author && available ) {
+        const response = await fetch(`/api/book/${id}`, {
+          method: 'PUT',
+          body: JSON.stringify({ id,title,year,synopsis,isbn,author, available  }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+    
+        if (response.ok) {
+          document.location.replace(`/book/${id}`);
+        } else {
+          alert('Failed to edit book');
+        }
+      }
+      if (title && year && synopsis && isbn && author && available && borrowed_user) {
         const response = await fetch(`/api/book/${id}`, {
           method: 'PUT',
           body: JSON.stringify({ id,title,year,synopsis,isbn,author, available,borrowed_user }),
@@ -26,7 +41,7 @@ const editFormHandler = async (event) => {
         if (response.ok) {
           document.location.replace(`/book/${id}`);
         } else {
-          alert('Failed to add book');
+          alert('Failed to edit book');
         }
       }
     };
