@@ -15,9 +15,9 @@ router.put('/:id', async (req, res) => {
             "author": req.body.author,
             "isbn": req.body.isbn,
             "rating": 0,
-            "available": true,
+            "available": req.body.available,
             "available_next": today,
-            "borrowed_user": null,
+            "borrowed_user": req.body.borrowed_user,
             "cover_link": req.body.cover
             },
             {where: {id: req.params.id}})
@@ -53,13 +53,14 @@ router.delete('/:id', async(req, res) => {
 });
 
 //post review
-router.post('/:id/review', async (req, res) => {
+router.post('/review', async (req, res) => {
+  console.log("><><><><><><><><><trying to post a review")
     try {
         const reviewData = await Review.create({
-            "content": req.body.review,
+            "content": req.body.content,
             "rating": req.body.rating,
             "user_id": req.session.user_id ,
-            "book_id": req.params.id
+            "book_id": req.body.book_id
         });
         res.status(200).json({message: `Successfully wrote review`})
     } catch (err) {
@@ -70,8 +71,9 @@ router.post('/:id/review', async (req, res) => {
 
 //delete review
 router.delete('/review/:id', async(req,res) => {
+  id = req.params.id
   try {  
-    const reviewData = await Review.delete({where: {"id": req.params.id}})
+    const reviewData = await Review.destroy({where: {"id": req.params.id}})
       if (!reviewData) {
         res.status(404).json({ message: 'No review found'})
         return;

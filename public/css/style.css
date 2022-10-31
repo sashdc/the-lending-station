@@ -75,7 +75,8 @@ a:active { text-decoration: none; }
  }
 
 
- #delete-review{
+ .delete-review{
    position: absolute;
    right: 5%;
- }
+    }
+
