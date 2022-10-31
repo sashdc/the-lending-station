@@ -11,13 +11,13 @@ const editFormHandler = async (event) => {
     const cover = document.querySelector('#cover').value.trim();
     const availability = document.forms["edit-book-form"].availability
     const available = availability.value
-    console.log (available)
+    const borrowed_user = document.querySelector('#borrower-id').value.trim();
 
     console.log(`trying to edit book ${id} `)
-    if (title && year && synopsis && isbn && author && available ) {
+    if (title && year && synopsis && isbn && author && available && borrowed_user ) {
         const response = await fetch(`/api/book/${id}`, {
           method: 'PUT',
-          body: JSON.stringify({ id,title,year,synopsis,isbn,author, available }),
+          body: JSON.stringify({ id,title,year,synopsis,isbn,author, available,borrowed_user }),
           headers: {
             'Content-Type': 'application/json',
           },

@@ -4,13 +4,17 @@
       <label for="title">Book ID</label>
       <input type="title" class="form-control" id="book-id" value="{{book.id}}">
     </div>
-     <div class="form-group">
+     <div class="form-group col-md-4">
     <label for="exampleFormControlSelect1">Available</label>
     <select name = "availability" class="form-control" id="availability">
       <option value="true">Yes</option>
       <option value="false">No</option>
       </select>
   </div>
+  <div class="form-group col-md-2">
+      <label for="title">Borrower ID</label>
+      <input type="title" class="form-control" id="borrower-id" value="{{book.id}}">
+    </div>
     </div>
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -23,15 +27,15 @@
     </div>
   </div>
   <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-2">
       <label for="year">Year published</label>
       <input type="year" class="form-control" id="year" value="{{book.year}}">
     </div>
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-5">
       <label for="isbn">ISBN#</label>
       <input type="isbn" class="form-control" id="isbn" value="{{book.isbn}}">
     </div>
-      <div class="form-group">
+      <div class="form-group col-md-5">
     <label for="exampleFormControlFile1">Upload Book Cover</label>
     <input type="file" class="form-control-file" id="cover">
   </div>

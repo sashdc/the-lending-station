@@ -17,7 +17,7 @@ router.put('/:id', async (req, res) => {
             "rating": 0,
             "available": req.body.available,
             "available_next": today,
-            "borrowed_user": null,
+            "borrowed_user": req.body.borrowed_user,
             "cover_link": req.body.cover
             },
             {where: {id: req.params.id}})
