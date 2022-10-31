@@ -8,7 +8,7 @@ const editFormHandler = async (event) => {
     const synopsis = document.querySelector('#synopsis').value.trim();
     const isbn = document.querySelector('#isbn').value.trim();
     const author = document.querySelector('#author').value.trim();
-    const cover = document.querySelector('#cover').value.trim();
+    // const cover = document.querySelector('#cover').value.trim();
     const availability = document.forms["edit-book-form"].availability
     const available = availability.value
     const borrowed_user = document.querySelector('#borrower-id').value.trim();
@@ -65,7 +65,7 @@ const editFormHandler = async (event) => {
   
     
     document
-      .querySelector(".book-image")
+      .querySelector("#cover-upload")
       .addEventListener("click", addButtonHandler);
 
     document
