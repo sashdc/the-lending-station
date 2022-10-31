@@ -39,7 +39,7 @@ router.get("/addbook", (req, res) => {
   }
 });
 
-// accessing admin dahsboard page
+// accessing admin dashboard page
 router.get("/admin", async (req, res) => {
   try {
     // Get all books and JOIN with user data
