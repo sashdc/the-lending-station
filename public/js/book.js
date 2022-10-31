@@ -93,25 +93,7 @@ const delButtonHandler = async (event) => {
   };
 
 
-  // delete a review when admin
-// const delReviewHandler = async (event) => {
-//    const bookid = window.location.toString().split("/")[
-//     window.location.toString().split("/").length - 1
-//   ];
-//   id = event.target.id;
-//   console.log(`trying to delete review id = ${id}`)
-//     if (confirm('Are you sure you want to delete this review?')){
-//       const response = await fetch(`/api/book/review/${id}`, {
-//         method: 'DELETE',
-//       });
-      
-//       if (response.ok) {
-//         document.location.replace(`/book/${bookid}`);
-//       } else {
-//         alert('Failed to delete the review');
-//       }
-//     }
-//   };
+
 // delete review when admin
   btns = document.getElementsByClassName("delete-review");
     for (var i = 0; i < btns.length; i++) {
@@ -135,18 +117,19 @@ const delButtonHandler = async (event) => {
     }
 
 
-  document
+  
+    document
+  .querySelector(".new-review-form")
+  .addEventListener("submit", newFormHandler);
+  
+    document
   .querySelector('.delete-book')
   .addEventListener('click', delButtonHandler);
 
-document
-  .querySelector(".new-review-form")
-  .addEventListener("submit", newFormHandler);
+
 
 document
   .querySelector(".book-image")
   .addEventListener("click", addButtonHandler);
 
-  // document
-  // .querySelector('.delete-review')
-  // .addEventListener('click', delReviewHandler);
+
