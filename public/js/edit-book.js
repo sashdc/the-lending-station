@@ -39,6 +39,11 @@ const editFormHandler = async (event) => {
         });
     
         if (response.ok) {
+          const res = await fetch(`/api/book/${id}/bh`, {
+            method: 'Post',
+            body: JSON.stringify({ id, borrowed_user }),
+            headers: {'Content-Type': 'application/json',}
+          })
           document.location.replace(`/book/${id}`);
         } else {
           alert('Failed to edit book');

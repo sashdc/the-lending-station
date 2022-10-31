@@ -9,31 +9,80 @@ router.put('/:id', async (req, res) => {
     try {
         const bookData = await Book.update(
             {
-            "title": req.body.title,
-            "year": req.body.year,
-            "synopsis": req.body.synopsis,
-            "author": req.body.author,
-            "isbn": req.body.isbn,
-            "available": req.body.available,
-            "available_next": today,
-            "borrowed_user": req.body.borrowed_user,
-            "cover_link": 7
+              "title": req.body.title,
+              "year": req.body.year,
+              "synopsis": req.body.synopsis,
+              "author": req.body.author,
+              "isbn": req.body.isbn,
+              "available": req.body.available,
+              "available_next": today,
+              "borrowed_user": req.body.borrowed_user,
+              "cover_link": 7
             },
             {where: {id: req.params.id}})
 
         if (!bookData){
             res.status(404).json({message: 'No book with this id found'})
-        }
-            res.status(200).json({message: `Successfully updated book`})
+        }  
+          res.status(200).json({message: `Successfully updated book`})
               
     } catch (err) {
         res.status(500).json(err);
     }
 })
 
+router.post('/:id/bh', async (req, res) => {
+  const bhData = await BorrowHistory.create(
+    {
+      "user_id": req.body.borrowed_user,
+      "book_id": req.params.id
+    })
+
+    res.status(200).json({message: `Added borrow history`})
+})
+
+//del borrow history
+router.delete('/:id/bh', async (req, res) => {
+  const bhData = await BorrowHistory.destroy({
+    where: {"book_id": req.params.id}})
+
+  if (!bhData) {
+    res.status(404).json({ message: 'No book found with that id!' });
+    return;
+  }
+
+  res.status(200).json({message: `Successfully deleted borrow history`});
+})
+
+//del cover
+router.delete('/:id/cover', async (req, res) => {
+  const coverData = await Cover.destroy({
+    where: {"book_id": req.params.id}})
+
+  if (!coverData) {
+    res.status(404).json({ message: 'No cover found with that id!' });
+    return;
+  }
+
+  res.status(200).json({message: `Successfully deleted cover`});
+})
+
+//del reviews
+router.delete('/:id/reviews', async (req, res) => {
+  const reviewData = await Review.destroy({
+    where: {"book_id": req.params.id}})
+
+  if (!reviewData) {
+    res.status(404).json({ message: 'No review found with that id!' });
+    return;
+  }
+
+  res.status(200).json({message: `Successfully deleted reviews`});
+})
+
 //del book
 router.delete('/:id', async(req, res) => {
-    try {
+    //try {
         const bookData = await Book.destroy({
           where: {
             "id": req.params.id
@@ -46,9 +95,9 @@ router.delete('/:id', async(req, res) => {
         }
     
         res.status(200).json({message: `Successfully deleted book`});
-      } catch (err) {
-        res.status(500).json(err);
-      }
+      // } catch (err) {
+      //   res.status(500).json(err);
+      // }
 });
 
 //post review
