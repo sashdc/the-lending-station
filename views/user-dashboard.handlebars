@@ -20,6 +20,8 @@
 
   </div>
 <!-- previously borrowed books -->
+        {{#if user.books}}
+
 <div class="container">
   <h1 class="fw-light text-center text-lg-start mt-5 mb-0">Previously borrowed books</h1>
 
@@ -35,6 +37,7 @@
   </div>
 
 </div>
+{{/if}}
 </div>
 
   <script src="/js/userdashboard.js"></script>

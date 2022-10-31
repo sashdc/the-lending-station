@@ -1,5 +1,10 @@
 const router = require("express").Router();
 const { Book, User, Review, BorrowHistory } = require("../models");
+const withAuth = require('../utlis/auth');
+const adminAuth = require('../utlis/admin');
+const userAuth = require('../utlis/admin');
+
+
 
 const sequelize = require("../config/connection");
 
@@ -31,7 +36,7 @@ router.get("/userlogin", (req, res) => {
 });
 
 // adding new book page
-router.get("/addbook", (req, res) => {
+router.get("/addbook", adminAuth, (req, res) => {
   try {
     res.render("new-book", {loggedIn: req.session.loggedIn, admin:req.session.admin });
   } catch (err) {
@@ -40,7 +45,7 @@ router.get("/addbook", (req, res) => {
 });
 
 // accessing admin dashboard page
-router.get("/admin", async (req, res) => {
+router.get("/admin", adminAuth, async (req, res) => {
   try {
     // Get all books and JOIN with user data
     const bookData = await Book.findAll();
@@ -59,7 +64,7 @@ router.get("/admin", async (req, res) => {
 });
 
 // access user dashboard
-router.get("/user", async (req, res) => {
+router.get("/user", withAuth, async (req, res) => {
   try {
     const userData = await User.findOne({
       where: { id: req.session.user_id },
@@ -74,8 +79,7 @@ router.get("/user", async (req, res) => {
     // Serialize data so the template can read it
     const user = userData.get({ plain: true });
     const borrowedbook = user.books[0]
-    console.table("THIS IS THE CURRENLTY BORROWE DBOOK" + borrowedbook.title)
-    console.log(user)
+
     // Pass serialized data and session flag into template
     res.render("user-dashboard", {
       user, borrowedbook,
@@ -94,7 +98,6 @@ router.get("/library", async (req, res) => {
     console.log(bookData);
     // Serialize data so the template can read it
     const books = bookData.map((book) => book.get({ plain: true }));
-    console.log(books);
     // Pass serialized data and session flag into template
     res.render("library", {
       books,
