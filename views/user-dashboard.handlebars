@@ -6,16 +6,16 @@
     <div class="card" style="width: 18rem; ">
         {{#if user.books}}
       <h4 class="text-center mt-1">Currently with you</h4>
-      <img class="card-img-top" src="/images/book cover.jpg" alt="Card image cap">
+      <img class="card-img-top" src="/images/covers/{{borrowedbook.id}}.jpg" alt="Card image cap">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">{{borrowedbook.title}}  </li>
-        <li class="list-group-item">Due Date: {{available.next}}</li>
+        <li class="list-group-item">Due Date: {{borrowedbook.available_next}}</li>
       </ul>
     </div>
     
   {{/if}}
 
-    <a href = "/library"><img src="/images/timtom-web.jpg"  class="w-100" alt="...">Head to the library</a>
+    {{!-- <a href = "/library"><img src="/images/timtom-web.jpg"  class="w-100" alt="...">Head to the library</a> --}}
 
 
   </div>
