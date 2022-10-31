@@ -46,6 +46,27 @@ const editFormHandler = async (event) => {
       }
     };
 
+    // Adding book cover
+    const addButtonHandler = async (event) => {
+      if (event.target.hasAttribute("data-id")) {
+        const id = event.target.getAttribute("data-id");
+    
+        const response = await fetch(`/api/image/${id}`, {
+          method: "POST",
+        });
+    
+        if (response.ok) {
+          document.location.replace("/image");
+        } else {
+          alert("Failed to add the book cover");
+        }
+      }
+    };
+  
+    
+    document
+      .querySelector(".book-image")
+      .addEventListener("click", addButtonHandler);
 
     document
     .querySelector('.edit-book-form')
