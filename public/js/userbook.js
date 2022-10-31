@@ -1,7 +1,7 @@
 // star rating
 const ratingStars = [...document.getElementsByClassName("rating__star")];
 
-let bookRating;
+let rating;
 
 function executeRating(stars) {
   const starClassActive = "rating__star fas fa-star";
@@ -12,8 +12,8 @@ function executeRating(stars) {
   stars.map((star) => {
     star.onclick = () => {
       i = stars.indexOf(star);
-      bookRating = i + 1;
-      console.log("this many stars " + bookRating);
+      rating = i + 1;
+      console.log("this many stars " + rating);
 
       if (star.className === starClassInactive) {
         for (i; i >= 0; --i) stars[i].className = starClassActive;
@@ -35,17 +35,17 @@ const newFormHandler = async (event) => {
   ];
 
   console.log(book_id)
-  const review = document.querySelector("#reviewtext").value.trim();
-  console.log(review)
+  const content = document.querySelector("#reviewtext").value.trim();
+  console.log(content)
 
-  if (review) {
-      const response = await fetch(`/api/book/review`, {
-        method: "POST",
-        body: JSON.stringify({ review, book_id, bookRating }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+  if (content) {
+        const response = await fetch(`/api/book/review`, {
+      method: "POST",
+      body: JSON.stringify({ content, book_id, rating }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
    console.log(response);
     if (response.ok) {
       updateReviewRating();      

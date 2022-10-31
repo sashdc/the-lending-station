@@ -54,9 +54,7 @@ const addButtonHandler = async (event) => {
       }
     };
   
-    document
-    .querySelector('.delete-review')
-    .addEventListener('click', delReviewHandler);
+
   
     document
     .querySelector('.delete-book')
@@ -65,3 +63,7 @@ const addButtonHandler = async (event) => {
   document
     .querySelector(".book-image")
     .addEventListener("click", addButtonHandler);
+
+    document
+    .querySelector('.delete-review')
+    .addEventListener('click', delReviewHandler);

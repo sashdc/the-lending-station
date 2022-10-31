@@ -4,7 +4,7 @@ const {User, Book, Review, BorrowHistory, Cover} = require('../../models');
 let today = new Date ()
 
 
-//update book
+//update book - cover_link dummy needs to be replaced
 router.put('/:id', async (req, res) => {
     try {
         const bookData = await Book.update(
@@ -17,7 +17,7 @@ router.put('/:id', async (req, res) => {
             "available": req.body.available,
             "available_next": today,
             "borrowed_user": req.body.borrowed_user,
-            "cover_link": req.body.cover
+            "cover_link": 7
             },
             {where: {id: req.params.id}})
 
