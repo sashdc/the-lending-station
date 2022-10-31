@@ -30,8 +30,6 @@ router.get("/:id", async (req, res) => {
  
     req.session.save(() => {
       req.session.book_id = req.params.id;
-
-      // res.json(book, reviews, userData)
       res.render("single-book", {
         book,
         reviews,
