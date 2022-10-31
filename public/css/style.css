@@ -5,9 +5,28 @@ font-family: "Fredoka one";
 .jumbotron {
     padding: 1rem 0rem;
     font-family: "Fredoka one";
-    background-color: white;
+    background-color:#94C5CC;
     color: black;
 
+}
+
+.container-fluid {
+   padding:5px;
+   background-color:#A1B5B5;
+}
+
+
+
+.container{
+   padding: 5px;  
+}
+
+
+.navbar-expand-lg {
+   background-color:darkcyan;
+}
+.flex-column{
+   background-color:darkcyan; 
 }
 
 a:link { text-decoration: none; }
@@ -26,6 +45,7 @@ a:active { text-decoration: none; }
 
 #available-badge{
     font-family:Arial, Helvetica, sans-serif
+    
 }
 /* user dash image carousel */
 
