@@ -67,7 +67,7 @@ const bookData = [
         rating: 3.5,
         available: false,
         available_next: next,
-        borrowed_user: 5,
+        borrowed_user: null,
         cover_link: 'placeholder'
     }, 
     {
@@ -80,7 +80,7 @@ const bookData = [
         rating: 4.8,
         available: false,
         available_next: next,
-        borrowed_user: 3,
+        borrowed_user: null,
         cover_link: 'placeholder'
     },
     {
@@ -119,7 +119,7 @@ const bookData = [
         rating: 4.5,
         available: false,
         available_next: next,
-        borrowed_user: 1,
+        borrowed_user: null,
         cover_link: 'placeholder'
     },
     {
@@ -132,7 +132,7 @@ const bookData = [
         rating: 4.4,
         available: false,
         available_next: next,
-        borrowed_user: 2,
+        borrowed_user: null,
         cover_link: 'placeholder'
     },
     {
@@ -145,7 +145,7 @@ const bookData = [
         rating:5,
         available: false,
         available_next: next,
-        borrowed_user:4,
+        borrowed_user: null,
         cover_link: 'placeholder'
     },
     {
@@ -158,7 +158,7 @@ const bookData = [
         rating:5,
         available: true,
         available_next: today,
-        borrowed_user:null,
+        borrowed_user: null,
         cover_link: 'placeholder'
     },
     {
@@ -171,7 +171,7 @@ const bookData = [
         rating:4.8,
         available: true,
         available_next: today,
-        borrowed_user:null,
+        borrowed_user: null,
         cover_link: 'placeholder'
     },
     {
@@ -184,7 +184,7 @@ const bookData = [
         rating:4.7,
         available: false,
         available_next: next,
-        borrowed_user:6,
+        borrowed_user: null,
         cover_link: 'placeholder'
     },
     {
@@ -197,7 +197,7 @@ const bookData = [
         rating:4.3,
         available:  false,
         available_next: next,
-        borrowed_user:7,
+        borrowed_user: null,
         cover_link: 'placeholder'
     },
   

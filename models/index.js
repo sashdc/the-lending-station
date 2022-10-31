@@ -18,12 +18,14 @@ User.belongsToMany (Book, {
 });
 
 Book.belongsTo(User, {
-    foreignKey: 'borrowed_user'
+    foreignKey: 'borrowed_user',
     //set null if user is deleted
+    onDelete: 'CASCADE'
 });
 
 Book.hasMany(Review, {
     foreignKey: 'book_id',
+    onDelete: 'CASCADE',
 });
 
 // Book.belongsToMany (User, {
@@ -35,7 +37,8 @@ Book.hasMany(Review, {
 // });
 
 Book.hasOne(Cover, {
-    foreignKey: 'book_id'
+    foreignKey: 'book_id',
+    onDelete: 'CASCADE'
 })
 
 Review.belongsTo(User, {

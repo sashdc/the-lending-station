@@ -7,17 +7,32 @@
     ];
     console.log(`trying to delete book id = ${id}`)
       if (confirm('Are you sure you want to delete this book?')){
-        const response = await fetch(`/api/book/${id}`, {
+        const res = await fetch (`/api/book/${id}/bh`, {
           method: 'DELETE',
         });
-        
-        if (response.ok) {
-          document.location.replace('/admin');
-        } else {
-          alert('Failed to delete the book');
-        }
-      }
-    };
+
+        const surpanakha = await fetch (`/api/book/${id}/cover`, {
+          method: 'DELETE',
+        });
+
+        const raktapaska = await fetch (`/api/book/${id}/reviews`, {
+          method: 'DELETE',
+        });
+
+        //if (res.ok){
+          const response = await fetch(`/api/book/${id}`, {
+            method: 'DELETE',
+          });
+          
+          if (response.ok) {
+            document.location.replace('/admin');
+          } else {
+            alert('Failed to delete the book');
+          }
+        // } else {
+        //   alert('Something went wrong');
+        //}
+  }};
   
   
     // delete a review when admin

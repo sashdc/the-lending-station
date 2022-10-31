@@ -12,7 +12,6 @@ Book.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-      onDelete: 'CASCADE',
     },
     title: {
         type: DataTypes.STRING,

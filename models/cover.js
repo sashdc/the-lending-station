@@ -12,6 +12,7 @@ Cover.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+      onDelete: 'CASCADE'
     },
     content: {
         type: DataTypes.BLOB('long'),

@@ -10,6 +10,7 @@ BorrowHistory.init(
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
+            onDelete: 'CASCADE'
         },
           user_id: {
             type: DataTypes.INTEGER,
