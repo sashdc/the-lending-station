@@ -23,6 +23,18 @@ router.get("/:id", async (req, res) => {
 
     const book = bookData.get({ plain: true });
     const reviews = bookData.reviews;
+    book.reviews.map((review)=> {
+      review.admin=req.session.admin
+    })
+    
+    console.log( {
+      book,
+      reviews,
+      loggedIn: req.session.loggedIn,
+      admin:req.session.admin, 
+      user_id: req.session.user_id,
+      book_id: req.session.book_id,
+    })
 
     req.session.save(() => {
       req.session.book_id = req.params.id;
@@ -34,7 +46,7 @@ router.get("/:id", async (req, res) => {
         loggedIn: req.session.loggedIn,
         admin:req.session.admin, 
         user_id: req.session.user_id,
-        post_id: req.session.post_id,
+        book_id: req.session.book_id,
       });
     });
   } catch (err) {
