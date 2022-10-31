@@ -1,3 +1,4 @@
+// adding book form
 const newFormHandler = async (event) => {
     event.preventDefault();
     
@@ -7,84 +8,66 @@ const newFormHandler = async (event) => {
     const isbn = document.querySelector('#isbn').value.trim();
     const author = document.querySelector('#author').value.trim();
     const cover = document.querySelector('#cover').value.trim();
-
-    if (title && year && synopsis && isbn) {
-        const response = await fetch(`/api/books`, {
+    if (title && year && synopsis && isbn && author ) {
+        const response = await fetch(`/api/adb/new-book`, {
           method: 'POST',
-          body: JSON.stringify({ title,year,synopsis,isbn,author, cover }),
+          body: JSON.stringify({ title,year,synopsis,isbn,author }),
           headers: {
             'Content-Type': 'application/json',
           },
         });
     
         if (response.ok) {
-          document.location.replace('/dashboard');
+          document.location.replace('/admin');
         } else {
           alert('Failed to add book');
         }
       }
     };
 
-    const delButtonHandler = async (event) => {
-        if (confirm('Are you sure you want to delete this book?')){
-          const response = await fetch(`/api/book/${id}`, {
-            method: 'DELETE',
-          });
-          
-          if (response.ok) {
-            document.location.replace('/dashboard');
-          } else {
-            alert('Failed to the delete book');
-          }
-        }
-      };
     
-       
-const picture = document.querySelector('#picture').value.trim();
+// adding a cover
+// const picture = document.querySelector('#picture').value.trim();
 
 
-if (picture) {
-       const response = await fetch(`/api/books`, {
-         method: 'POST',
-         body: JSON.stringify({ picture }),
-         headers: {
-           'Content-Type': 'application/json',
-         },
-       });
-       if (response.ok) {
-           document.location.replace('/picture');
-         } else {
-           alert('Failed to upload the picture for the book');
-         }
-       };
+// if (picture) {
+//        const response = await fetch(`/api/books`, {
+//          method: 'POST',
+//          body: JSON.stringify({ picture }),
+//          headers: {
+//            'Content-Type': 'application/json',
+//          },
+//        });
+//        if (response.ok) {
+//            document.location.replace('/picture');
+//          } else {
+//            alert('Failed to upload the picture for the book');
+//          }
+//        };
      
 
 
-     const addButtonHandler = async (event) => {
-       if (event.target.hasAttribute('data-id')) {
-         const id = event.target.getAttribute('data-id');
+//      const addButtonHandler = async (event) => {
+//        if (event.target.hasAttribute('data-id')) {
+//          const id = event.target.getAttribute('data-id');
      
-         const response = await fetch(`/api/picture/${id}`, {
-           method: 'POST',
-         });
+//          const response = await fetch(`/api/picture/${id}`, {
+//            method: 'POST',
+//          });
      
-         if (response.ok) {
-           document.location.replace('/picture');
-         } else {
-           alert('Failed to upload the picture for the book');
-         }
-       }
-     };
+//          if (response.ok) {
+//            document.location.replace('/picture');
+//          } else {
+//            alert('Failed to upload the picture for the book');
+//          }
+//        }
+//      };
 
-document
-     .querySelector('.new-uploadpic-form')
-     .addEventListener('upload', newFormHandler);
-      
+// document
+//      .querySelector('.new-uploadpic-form')
+//      .addEventListener('upload', newFormHandler);
       
       document
         .querySelector('.new-book-form')
         .addEventListener('submit', newFormHandler);
       
-      document
-        .querySelector('.book-history')
-        .addEventListener('click', delButtonHandler);

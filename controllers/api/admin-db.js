@@ -14,8 +14,10 @@ router.get('/book', async (req,res) => {
     }
 })
 
-// post book
+// post book -cover_link is fixed value, fix before deployment
 router.post('/new-book', async (req, res) => {
+    console.log("trying to add a new book")
+
     try {
         let bookData = await Book.create({
             "title": req.body.title,
@@ -27,7 +29,9 @@ router.post('/new-book', async (req, res) => {
             "available": true,
             "available_next": today,
             "borrowed_user": null,
-            "cover_link": req.body.cover
+            "cover_link": 7
+            
+            // req.body.cover
         })
 
         req.session.save(() => {
@@ -48,6 +52,7 @@ router.post('/new-book-cover', async (req, res) => {
         const imageData = await Image.create({
             "image": b64im,
             "book_id": req.session.book_id,
+            "type": req.file.mimetype
         })
 
         res.status(200).json(imageData);
