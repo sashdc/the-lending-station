@@ -1,18 +1,18 @@
 <form class="w-75 m-auto edit-book-form" id="edit-book-form">
   <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-4">
       <label for="title">Book ID</label>
       <input type="title" class="form-control" id="book-id" value="{{book.id}}">
     </div>
-     <div class="form-group col-md-4">
+     <div class="form-group col-md-3">
     <label for="exampleFormControlSelect1">Available</label>
     <select name = "availability" class="form-control" id="availability">
       <option value="true">Yes</option>
       <option value="false">No</option>
       </select>
   </div>
-  <div class="form-group col-md-2">
-      <label for="title">Borrower ID</label>
+  <div class="form-group col-md-5">
+      <label for="title">Borrower ID (enter 0 for available books)</label>
       <input type="title" class="form-control" id="borrower-id" value="{{book.id}}">
     </div>
     </div>
