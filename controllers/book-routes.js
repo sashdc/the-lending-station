@@ -62,7 +62,7 @@ router.get("/edit/:id", async (req, res) => {
          });
 
     const book = bookData.get({ plain: true });
-
+         console.log(book)
     req.session.save(() => {
       req.session.book_id = req.params.id;
 

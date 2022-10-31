@@ -26,6 +26,7 @@ function executeRating(stars) {
 executeRating(ratingStars);
 
 
+
 // adding a review & rating
 const newFormHandler = async (event) => {
   event.preventDefault();
