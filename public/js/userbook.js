@@ -56,6 +56,7 @@ const newFormHandler = async (event) => {
   }
 };
 
+// updating the rating 
 let updateReviewRating = async () => {
   const reviewRatings = await fetch(`/api/book/ratings/`, {
     method: "GET",

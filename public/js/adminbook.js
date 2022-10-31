@@ -1,19 +1,4 @@
-// adding a book image
-const addButtonHandler = async (event) => {
-    if (event.target.hasAttribute("data-id")) {
-      const id = event.target.getAttribute("data-id");
-  
-      const response = await fetch(`/api/image/${id}`, {
-        method: "POST",
-      });
-  
-      if (response.ok) {
-        document.location.replace("/image");
-      } else {
-        alert("Failed to add the book image");
-      }
-    }
-  };
+
   
   // delete a book when admin
   const delButtonHandler = async (event) => {
@@ -51,23 +36,27 @@ const addButtonHandler = async (event) => {
   
   
     // delete a review when admin
-  const delReviewHandler = async (event) => {
-    const id = window.location.toString().split("/")[
-      window.location.toString().split("/").length - 1
-    ];
-    console.log(`trying to delete book id = ${id}`)
-      if (confirm('Are you sure you want to delete this book?')){
-        const response = await fetch(`/api/book/${id}`, {
-          method: 'DELETE',
-        });
-        
-        if (response.ok) {
-          document.location.replace('/admin');
-        } else {
-          alert('Failed to delete the book');
-        }
-      }
-    };
+    btns = document.getElementsByClassName("delete-review");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", async function () {
+          const bookid = window.location.toString().split("/")[
+            window.location.toString().split("/").length - 1
+          ];
+          id = event.target.id;
+          console.log(`trying to delete review id = ${id}`)
+            if (confirm('Are you sure you want to delete this review?')){
+              const response = await fetch(`/api/book/review/${id}`, {
+                method: 'DELETE',
+              });
+              
+              if (response.ok) {
+                document.location.replace(`/book/${bookid}`);
+              } else {
+                alert('Failed to delete the review');
+              }
+            }        });
+    }
+
   
 
   
@@ -75,10 +64,3 @@ const addButtonHandler = async (event) => {
     .querySelector('.delete-book')
     .addEventListener('click', delButtonHandler);
    
-  document
-    .querySelector(".book-image")
-    .addEventListener("click", addButtonHandler);
-
-    document
-    .querySelector('.delete-review')
-    .addEventListener('click', delReviewHandler);

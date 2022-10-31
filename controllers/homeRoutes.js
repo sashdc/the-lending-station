@@ -66,19 +66,19 @@ router.get("/user", async (req, res) => {
       include: [
         {
           model: Book,
-          BorrowHistory,
+          BorrowHistory
         },
       ],
     });
 
     // Serialize data so the template can read it
     const user = userData.get({ plain: true });
-    console.log(req.session.user_id);
-    console.log(user);
-    console.table(user);
+    const borrowedbook = user.books[0]
+    console.table("THIS IS THE CURRENLTY BORROWE DBOOK" + borrowedbook.title)
+    console.log(user)
     // Pass serialized data and session flag into template
     res.render("user-dashboard", {
-      user,
+      user, borrowedbook,
       loggedIn: req.session.loggedIn, admin:req.session.admin
     });
   } catch (err) {
