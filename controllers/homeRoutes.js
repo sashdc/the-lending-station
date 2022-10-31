@@ -73,12 +73,12 @@ router.get("/user", async (req, res) => {
 
     // Serialize data so the template can read it
     const user = userData.get({ plain: true });
-    console.log(req.session.user_id);
-    console.log(user);
-    console.table(user.BorrowHistory);
+    const borrowedbook = user.books[0]
+    console.table("THIS IS THECURRENLTY BORROWE DBOOK" + borrowedbook)
+    console.log(user)
     // Pass serialized data and session flag into template
     res.render("user-dashboard", {
-      user,
+      user, borrowedbook,
       loggedIn: req.session.loggedIn, admin:req.session.admin
     });
   } catch (err) {

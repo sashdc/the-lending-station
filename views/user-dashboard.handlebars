@@ -4,18 +4,16 @@
 <div class="d-flex flex-column mt-5 ">
   <div class="d-flex flex-row justify-content-between border-dark">
     <div class="card" style="width: 18rem; ">
-{{#each books as |book|}}
-      {{#if book.borrowed_user:user.id}}
+        {{#if user.books}}
       <h4 class="text-center mt-1">Currently with you</h4>
       <img class="card-img-top" src="/images/book cover.jpg" alt="Card image cap">
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{book.title}}  </li>
-        <li class="list-group-item">Borrowed date: </li>
-        <li class="list-group-item">Due Date:</li>
+        <li class="list-group-item">{{borrowedbook.title}}  </li>
+        <li class="list-group-item">Due Date: {{available.next}}</li>
       </ul>
     </div>
-      {{/if}}
-{{/each}}      
+    
+  {{/if}}
 
     <a href = "/library"><img src="/images/timtom-web.jpg"  class="w-100" alt="...">Head to the library</a>
 
@@ -38,3 +36,6 @@
 
 </div>
 </div>
+
+  <script src="/js/userdashboard.js"></script>
+
