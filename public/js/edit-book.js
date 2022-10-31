@@ -9,12 +9,15 @@ const editFormHandler = async (event) => {
     const isbn = document.querySelector('#isbn').value.trim();
     const author = document.querySelector('#author').value.trim();
     const cover = document.querySelector('#cover').value.trim();
+    const availability = document.forms["edit-book-form"].availability
+    const available = availability.value
+    console.log (available)
 
     console.log(`trying to edit book ${id} `)
-    if (title && year && synopsis && isbn && author ) {
+    if (title && year && synopsis && isbn && author && available ) {
         const response = await fetch(`/api/book/${id}`, {
           method: 'PUT',
-          body: JSON.stringify({ id,title,year,synopsis,isbn,author }),
+          body: JSON.stringify({ id,title,year,synopsis,isbn,author, available }),
           headers: {
             'Content-Type': 'application/json',
           },

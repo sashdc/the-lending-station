@@ -15,7 +15,7 @@ router.put('/:id', async (req, res) => {
             "author": req.body.author,
             "isbn": req.body.isbn,
             "rating": 0,
-            "available": true,
+            "available": req.body.available,
             "available_next": today,
             "borrowed_user": null,
             "cover_link": req.body.cover
