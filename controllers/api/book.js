@@ -72,7 +72,8 @@ router.post('/review', async (req, res) => {
 router.get('/ratings', async (req, res) => {
   const ratings = await Book.findOne({include: {model: Review, attributes: ['rating']}, where: {id: req.session.book_id}})
   let e = ratings.reviews.map((f) => f.rating)
-  res.status(200).json({e})
+  res.status(200).json({e}) 
+  console.log(e)
 })
 
 //update rating

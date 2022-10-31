@@ -27,15 +27,7 @@ router.get("/:id", async (req, res) => {
       review.admin=req.session.admin
     })
     
-    console.log( {
-      book,
-      reviews,
-      loggedIn: req.session.loggedIn,
-      admin:req.session.admin, 
-      user_id: req.session.user_id,
-      book_id: req.session.book_id,
-    })
-
+ 
     req.session.save(() => {
       req.session.book_id = req.params.id;
       res.render("single-book", {
