@@ -46,7 +46,7 @@ const bookData = [
     },
     {
         id: 4,
-        title: 'Cicero: THe Life and Times of Rome\'s Greatest Politician',
+        title: 'Cicero: The Life and Times of Rome\'s Greatest Politician',
         year: 2003,
         author: 'Anthony Everitt',
         isbn: 9780375758959,

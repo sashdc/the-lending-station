@@ -48,12 +48,31 @@ const newFormHandler = async (event) => {
     });
    console.log(response);
     if (response.ok) {
+      updateReviewRating();      
       document.location.replace(`/book/${book_id}`);
     } else {
       alert("Failed to add review for the book");
     }
   }
 };
+
+let updateReviewRating = async () => {
+  const reviewRatings = await fetch(`/api/book/ratings/`, {
+    method: "GET",
+    headers: {"Content-Type": "application/json"}
+  })
+
+  let ratingArray = JSON.parse(reviewRatings)
+  const newRating = ratingArray.reduce((a,b) => a + b, 0) / ratingArray.length
+  console.log(newRating)
+
+  const updateReview = await fetch(`/api/book/review/update`, {
+    method: 'PUT',
+    body: JSON.stringify({newRating}),
+    headers: {"Content-Type": "application/json"}
+  })
+  console.log(updateReview)
+}
 
 document
   .querySelector(".new-review-form")
