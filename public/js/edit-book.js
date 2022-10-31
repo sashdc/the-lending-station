@@ -8,7 +8,7 @@ const editFormHandler = async (event) => {
     const synopsis = document.querySelector('#synopsis').value.trim();
     const isbn = document.querySelector('#isbn').value.trim();
     const author = document.querySelector('#author').value.trim();
-    const cover = document.querySelector('#cover').value.trim();
+    // const cover = document.querySelector('#cover').value.trim();
     const availability = document.forms["edit-book-form"].availability
     const available = availability.value
     const borrowed_user = document.querySelector('#borrower-id').value.trim();
@@ -46,6 +46,27 @@ const editFormHandler = async (event) => {
       }
     };
 
+    // Adding book cover
+    const addButtonHandler = async (event) => {
+      if (event.target.hasAttribute("data-id")) {
+        const id = event.target.getAttribute("data-id");
+    
+        const response = await fetch(`/api/image/${id}`, {
+          method: "POST",
+        });
+    
+        if (response.ok) {
+          document.location.replace("/image");
+        } else {
+          alert("Failed to add the book cover");
+        }
+      }
+    };
+  
+    
+    document
+      .querySelector("#cover-upload")
+      .addEventListener("click", addButtonHandler);
 
     document
     .querySelector('.edit-book-form')
