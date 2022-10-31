@@ -67,12 +67,12 @@ a:active { text-decoration: none; }
     filter: drop-shadow(1px 1px 4px gold);
  }
 
- .fa-trash{
+ /* .fa-trash{
     color:rgb(241, 103, 103)
  }
  .fa-pen-to-square{
     color: green;
- }
+ } */
 
 
  .delete-review{
@@ -80,3 +80,5 @@ a:active { text-decoration: none; }
    right: 5%;
     }
 
+    /* star rating display by book */
+    

@@ -4,7 +4,12 @@
       <img src="/images/covers/{{book.id}}.jpg" class=" float-left rounded mx-auto d-block" style="width:400px">
     </div>
     <div class="d-flex flex-column ml-5 mb-5" id="book-data">
-      <h1>{{book.title}} {{book.rating}} </h1>
+      <h1>{{book.title}}</h1>
+      <div class="display-rating">
+        {{book.rating}}
+         <i class="fas fa-star text-warning me-2"></i>
+         
+   </div>
       <h2>{{book.author}}, {{book.year}}</h2>
       <p>{{book.synopsis}}
       </p>
