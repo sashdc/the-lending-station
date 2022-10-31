@@ -94,28 +94,46 @@ const delButtonHandler = async (event) => {
 
 
   // delete a review when admin
-const delReviewHandler = async (event) => {
-  const bookid = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 1
-  ];
-  id = event.target.id;
-  console.log(`trying to delete review id = ${id}`)
-    if (confirm('Are you sure you want to delete this review?')){
-      const response = await fetch(`/api/book/review/${id}`, {
-        method: 'DELETE',
-      });
+// const delReviewHandler = async (event) => {
+//    const bookid = window.location.toString().split("/")[
+//     window.location.toString().split("/").length - 1
+//   ];
+//   id = event.target.id;
+//   console.log(`trying to delete review id = ${id}`)
+//     if (confirm('Are you sure you want to delete this review?')){
+//       const response = await fetch(`/api/book/review/${id}`, {
+//         method: 'DELETE',
+//       });
       
-      if (response.ok) {
-        document.location.replace(`/book/${bookid}`);
-      } else {
-        alert('Failed to delete the review');
-      }
+//       if (response.ok) {
+//         document.location.replace(`/book/${bookid}`);
+//       } else {
+//         alert('Failed to delete the review');
+//       }
+//     }
+//   };
+// delete review when admin
+  btns = document.getElementsByClassName("delete-review");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", async function () {
+          const bookid = window.location.toString().split("/")[
+            window.location.toString().split("/").length - 1
+          ];
+          id = event.target.id;
+          console.log(`trying to delete review id = ${id}`)
+            if (confirm('Are you sure you want to delete this review?')){
+              const response = await fetch(`/api/book/review/${id}`, {
+                method: 'DELETE',
+              });
+              
+              if (response.ok) {
+                document.location.replace(`/book/${bookid}`);
+              } else {
+                alert('Failed to delete the review');
+              }
+            }        });
     }
-  };
 
-  document
-  .querySelector('.delete-review')
-  .addEventListener('click', delReviewHandler);
 
   document
   .querySelector('.delete-book')
@@ -128,3 +146,7 @@ document
 document
   .querySelector(".book-image")
   .addEventListener("click", addButtonHandler);
+
+  // document
+  // .querySelector('.delete-review')
+  // .addEventListener('click', delReviewHandler);
