@@ -7,7 +7,7 @@
       <h1>{{book.title}}</h1>
       <div class="display-rating">
         
-<div><span class="stars-container stars-{{book.rating}}">★★★★★</span></div>
+<div><span class="stars-container stars-{{starRating}}">★★★★★</span></div>
          
    </div>
       <h2>{{book.author}}, {{book.year}}</h2>
@@ -16,6 +16,8 @@
       {{#if book.available}}<span class="badge badge-pill badge-success w-25" id="available-badge">Available</span>
       {{else}}
       <span class="badge badge-pill badge-danger w-25" id="available-badge">Not available</span>
+       <p>Due Back : {{book.available_next}}
+      </p>
       {{/if}}
       {{!-- <h4>Borrowed Before?</h4> --}}
       {{!-- only show radd review option for logged in --}}
@@ -31,9 +33,7 @@
          <i class="rating__star far fa-star"></i>
    </div>
 
-        <div class="username">
-          as Username
-        </div>
+    
         <div class="form-group">
           <textarea class="form-control w-100" id="reviewtext" rows="3"></textarea>
         </div>
@@ -43,8 +43,8 @@
       {{/if}}
       {{/unless}}
           {{#if admin}}
-<a type="button" class="btn btn-sm mt-5 btn-outline-info edit-book" href="edit/{{book.id}}">Edit Book</a>
-<button type="button" class="btn btn-sm mt-3 btn-outline-danger delete-book">Delete Book</button>
+<a type="button" class="btn btn-sm mt-5 btn-outline-info edit-book" href="edit/{{book.id}}">Edit Book <i class="fa-solid fa-pen-to-square"></i></a>
+<button type="button" class="btn btn-sm mt-3 btn-outline-danger delete-book">Delete Book <i class="fa fa-trash delete-book" aria-hidden="true"></i></button>
 <a button type="button" class="btn btn-sm mt-3 btn-outline-success delete-book" href="/admin">Back to admin dashboard</a>
 
       {{/if}}

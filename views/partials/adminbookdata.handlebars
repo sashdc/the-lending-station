@@ -1,3 +1,4 @@
+{{!-- renders table elements for admin dashboard --}}
 <tr>
   <th scope="row">{{id}}</th>
   <td><a class = "btn btn-sm" href="/book/{{id}}">{{title}}</a></td>
@@ -5,9 +6,7 @@
   <td>{{#if available}}Yes{{else}}No{{/if}}</td>
   <td>{{available_next}}</td>
   <td>{{#if available}}-{{else}}{{borrowed_user}}{{/if}}</td>
-  {{!-- <td><i class="fa-solid fa-pen-to-square"></i></td>
-  <td><i class="fa fa-trash delete-book" aria-hidden="true"></i>
-  </td> --}}
+
 </tr>
 
 

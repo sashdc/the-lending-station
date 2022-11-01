@@ -69,9 +69,9 @@ const editFormHandler = async (event) => {
     };
   
     
-    document
-      .querySelector("#cover-upload")
-      .addEventListener("click", addButtonHandler);
+    // document
+    //   .querySelector("#cover-upload")
+    //   .addEventListener("click", addButtonHandler);
 
     document
     .querySelector('.edit-book-form')

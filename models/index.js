@@ -28,14 +28,6 @@ Book.hasMany(Review, {
     onDelete: 'CASCADE',
 });
 
-// Book.belongsToMany (User, {
-//     through: {
-//         model: BorrowHistory,
-//         foreignKey: 'book_id',
-//         unique: false
-//     }
-// });
-
 Book.hasOne(Cover, {
     foreignKey: 'book_id',
     onDelete: 'CASCADE'
