@@ -23,7 +23,7 @@ const seedAll = async () => {
     console.log('\n----- BORROW HISTORY SEEDED -----\n');
 
     await seedCovers();
-    console.log('\n----- Covers SEEDED -----\n');
+    console.log('\n----- COVERS SEEDED -----\n');
   
     process.exit(0);
   };

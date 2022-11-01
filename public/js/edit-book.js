@@ -52,21 +52,21 @@ const editFormHandler = async (event) => {
     };
 
     // Adding book cover
-    const addButtonHandler = async (event) => {
-      if (event.target.hasAttribute("data-id")) {
-        const id = event.target.getAttribute("data-id");
+    // const addButtonHandler = async (event) => {
+    //   if (event.target.hasAttribute("data-id")) {
+    //     const id = event.target.getAttribute("data-id");
     
-        const response = await fetch(`/api/image/${id}`, {
-          method: "POST",
-        });
+    //     const response = await fetch(`/api/image/${id}`, {
+    //       method: "POST",
+    //     });
     
-        if (response.ok) {
-          document.location.replace("/image");
-        } else {
-          alert("Failed to add the book cover");
-        }
-      }
-    };
+    //     if (response.ok) {
+    //       document.location.replace("/image");
+    //     } else {
+    //       alert("Failed to add the book cover");
+    //     }
+    //   }
+    // };
   
     
     document
