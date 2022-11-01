@@ -101,4 +101,35 @@ a:active { text-decoration: none; }
     }
 
     /* star rating display by book */
+    body { font-size: 18px; }
+
+.stars-container {
+  position: relative;
+  display: inline-block;
+  color: transparent;
+}
+
+.stars-container:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '★★★★★';
+  color: lightgray;
+}
+
+.stars-container:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '★★★★★';
+  color: gold;
+  overflow: hidden;
+}
+
+.stars-0:after { width: 0%; }
+.stars-1:after { width: 20%; }
+.stars-2:after { width: 40%; }
+.stars-3:after { width: 60%; }
+.stars-4:after { width: 80%; }
+.stars-5:after { width: 100; }
     

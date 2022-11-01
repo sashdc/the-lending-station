@@ -1,10 +1,12 @@
 const router = require('express').Router();
 const {User, Book, Review, BorrowHistory, Cover} = require('../../models');
+const withAuth = require('../../utlis/auth');
+const adminAuth = require('../../utlis/admin');
 
 let today = new Date ()
 
 //update book - cover_link dummy needs to be replaced
-router.put('/:id', async (req, res) => {
+router.put('/:id',adminAuth, async (req, res) => {
     try {
         const bookData = await Book.update(
             {
@@ -29,7 +31,7 @@ router.put('/:id', async (req, res) => {
     }
 })
 
-router.post('/:id/bh', async (req, res) => {
+router.post('/:id/bh', adminAuth, async (req, res) => {
   const bhData = await BorrowHistory.create(
     {
       "user_id": req.body.borrowed_user,
@@ -40,7 +42,7 @@ router.post('/:id/bh', async (req, res) => {
 })
 
 //del borrow history
-router.delete('/:id/bh', async (req, res) => {
+router.delete('/:id/bh', adminAuth, async (req, res) => {
   const bhData = await BorrowHistory.destroy({
     where: {"book_id": req.params.id}})
 
@@ -53,7 +55,7 @@ router.delete('/:id/bh', async (req, res) => {
 })
 
 //del cover
-router.delete('/:id/cover', async (req, res) => {
+router.delete('/:id/cover', adminAuth, async (req, res) => {
   const coverData = await Cover.destroy({
     where: {"book_id": req.params.id}})
 
@@ -66,7 +68,7 @@ router.delete('/:id/cover', async (req, res) => {
 })
 
 //del reviews
-router.delete('/:id/reviews', async (req, res) => {
+router.delete('/:id/reviews', adminAuth, async (req, res) => {
   const reviewData = await Review.destroy({
     where: {"book_id": req.params.id}})
 
@@ -79,7 +81,7 @@ router.delete('/:id/reviews', async (req, res) => {
 })
 
 //del book
-router.delete('/:id', async(req, res) => {
+router.delete('/:id', adminAuth, async(req, res) => {
     //try {
         const bookData = await Book.destroy({
           where: {
@@ -99,7 +101,7 @@ router.delete('/:id', async(req, res) => {
 });
 
 //post review
-router.post('/review', async (req, res) => {
+router.post('/review', withAuth, async (req, res) => {
   console.log("><><><><><><><><><trying to post a review")
     try {
         const reviewData = await Review.create({

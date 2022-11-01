@@ -1,19 +1,6 @@
 const router = require('express').Router();
 const {User, Book, Review, BorrowHistory} = require('../../models');
 
-//test
-// router.get ('/', async (req, res) => {
-//     try {
-//         const userData = await User.findAll({include: [
-//             { model: Book, attributes: ['title', 'author', 'rating'] },
-//             { model: Review, attributes: ['content', 'book_id'] },
-//         ]
-//         })
-//         res.status(200).json(userData);
-//     } catch (err) {
-//         res.status(500).json(err)
-//     }
-// })
 
 router.post('/signup', async (req, res) => {
     // create a new user

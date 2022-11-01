@@ -1,8 +1,11 @@
 const router = require("express").Router();
 const { User, Book, Review, BorrowHistory } = require("../models");
+const withAuth = require('../utlis/auth');
+const adminAuth = require('../utlis/admin');
+
 
 // book by id, maybe move to site route
-router.get("/:id", async (req, res) => {
+router.get("/:id",withAuth, async (req, res) => {
   try {
     const bookData = await Book.findOne({
       where: { id: req.params.id },
@@ -54,7 +57,7 @@ router.get("/:id", async (req, res) => {
 
 
 // getting book to edit by id - loading all current info into the edit form
-router.get("/edit/:id", async (req, res) => {
+router.get("/edit/:id",adminAuth, async (req, res) => {
   console.log("trying to edit the book but in the route bit")
   try {
     const bookData = await Book.findOne({
