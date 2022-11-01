@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const fs = require('fs')
 const {User, Book, Review, BorrowHistory} = require('../../models');
 
 let today = new Date()
@@ -29,7 +30,6 @@ router.post('/new-book', async (req, res) => {
             "available": true,
             "available_next": today,
             "borrowed_user": null,
-            "cover_link": 7
             
             // req.body.cover
         })
@@ -46,14 +46,18 @@ router.post('/new-book', async (req, res) => {
 })
 
 router.post('/new-book-cover', async (req, res) => {
+    console.log(req.file)
+    console.log('mundo file')
     try {
         let buff = new Buffer.from(req.file.buffer);
-        let b64im = bugg.toString('base64');
+        let b64im = buff.toString('base64');
         const imageData = await Image.create({
             "image": b64im,
             "book_id": req.session.book_id,
             "type": req.file.mimetype
         })
+
+        console.log(b64im)
 
         res.status(200).json(imageData);
     } catch (err) {

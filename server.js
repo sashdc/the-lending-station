@@ -7,7 +7,7 @@ const helpers = require('./utlis/helpers');
 const multer = require('multer')
 
 const storage = multer.memoryStorage()
-const uploadDB = multer({ storage: storage})
+const uploadDB = multer({ storage: storage })
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -40,7 +40,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 //Muldter
-app.use(uploadDB.single('image'), (req, res, next) => {
+app.post('/singleFile',uploadDB.single('avatar'), (req, res, next) => {
   console.log(req.file)
   next()
 })

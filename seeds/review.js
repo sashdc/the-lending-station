@@ -38,7 +38,7 @@ const reviewData = [
     },
     {
         id: 6,
-        content: 'Lively and dramatic,a clear-eyed biography.',
+        content: 'How the mighty have fallen. Like the LPL /s',
         rating: 5,
         user_id: 5,
         book_id: 3
@@ -73,15 +73,15 @@ const reviewData = [
     },
     {
         id: 11,
-        content: 'This book is great! The first words catch my attention! A grand story that mixes greek mythology with war! .',
+        content: 'This translation is the apex, nay, the zenith, of what all other translations of ancient classics should be like. Bravo!',
         rating: 5,
         user_id: 2,
         book_id: 1, 
     },
     {
-        id:12,
-        content: 'Possibly best book ever made . The poetry is just great. A real example of true literature!',
-        rating: 4,
+        id: 12,
+        content: 'The absolute horridness of this book could raise the living dead.',
+        rating: 1,
         user_id: 4,
         book_id: 1
     }
