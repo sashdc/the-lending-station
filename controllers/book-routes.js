@@ -35,7 +35,7 @@ router.get("/:id", withAuth, async (req, res) => {
     console.log(review)
     starRating = Math.ceil(book.rating);
     console.log(starRating);
-    book.reviews.map((review) => {
+    review.map((review) => {
       review.admin = req.session.admin;
     });
        req.session.save(() => {
