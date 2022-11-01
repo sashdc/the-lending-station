@@ -42,7 +42,6 @@
             window.location.toString().split("/").length - 1
           ];
           id = event.target.parentNode.id;
-          console.log(event.target.parentNode.id)
           console.log(`trying to delete review id = ${id}`)
             if (confirm('Are you sure you want to delete this review?')){
               const response = await fetch(`/api/book/review/${id}`, {
