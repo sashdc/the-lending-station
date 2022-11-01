@@ -24,7 +24,7 @@ This application has been deployed onto Heroku and should run without any instal
 
 This application has been deployed onto Heroku, here is a link to the deployed site:
 
-https://the-lending-station.herokuapp.com/
+[The Lending Station](https://the-lending-station.herokuapp.com/)
 
 Here is an image of the deployed application's dashboard on loading:
 
@@ -52,4 +52,4 @@ Here are two links to reach out to me:
 
 Github: https://github.com/sashdc
 
-Email: ${sashemail}
+Email: saharshdc@gmail.com
