@@ -3,21 +3,31 @@
 
 <div class="d-flex flex-column mt-5 ">
   <div class="d-flex flex-row justify-content-between border-dark">
-    <div class="card" style="width: 18rem; ">
         {{#if user.books}}
-      <h4 class="text-center mt-1">Currently with you</h4>
-      <img class="card-img-top" src="/images/covers/{{borrowedbook.id}}.jpg" alt="Card image cap">
+    <div class="card m-auto" style="width: 18rem; ">
+          <h4 class="text-center mt-1">Currently with you</h4>
+      <a href = "/book/{{borrowedbook.id}}"><img class="card-img-top" src="/images/covers/{{borrowedbook.id}}.jpg" alt="Card image cap"></a>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">{{borrowedbook.title}}  </li>
         <li class="list-group-item">Due Date: {{borrowedbook.available_next}}</li>
       </ul>
     </div>
     
-  {{/if}}
+  {{else}}
 
-    {{!-- <a href = "/library"><img src="/images/timtom-web.jpg"  class="w-100" alt="...">Head to the library</a> --}}
+        
+      <!-- DEMO 2 Item-->
+      <div class="col-lg-6 mb-3 mb-lg-0 m-auto">
+      <a href="/library"><div class="hover hover-2 text-white rounded"><img src="/images/timtom-web - copy.jpg" alt="">
+          <div class="hover-overlay"></div>
+          <div class="hover-2-content px-5 py-4">
+            <h3 class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">The </span>Library</h3>
+            <p class="hover-2-description text-uppercase mb-0">Click here to see what we have available and get reading.</p>
+          </div>
+        </div></a>
+      </div>
 
-
+{{/if}}
   </div>
 <!-- previously borrowed books -->
         {{#if user.books}}

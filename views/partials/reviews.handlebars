@@ -1,3 +1,5 @@
+{{!-- renders reviews for book page --}}
+
 <div class="card m-3 shadow">
   <div class="card-body">
     <div class="d-flex flex-start">
@@ -15,7 +17,7 @@
           <div class="d-flex flex-row">
             {{rating}}<i class="fas fa-star text-warning me-2"></i>
             {{#if admin}}
-            <button class="btn btn-sm btn-outline-danger delete-review" id="{{id}}" value ="{{id}}">Delete Review</button>
+            <button class="btn btn-sm btn-outline-danger delete-review" id="{{id}}" value ="{{id}}"> <i class="fa fa-trash delete-book" aria-hidden="true"></i></button>
             {{/if}}
           </div>
         </div>

@@ -1,162 +1,235 @@
-*{
-font-family: "Fredoka one";
+:root {
+   --insidecolour: rgb(235, 235, 235);
+   --bodycolour: darkcyan;
+}
+
+* {
+   font-family: "Fredoka one";
 }
 
 .jumbotron {
-    padding: 1rem 0rem;
-    font-family: "Fredoka one";
-    background-color:#94C5CC;
-    color: black;
+   padding: 1rem 0rem;
+   font-family: "Fredoka one";
+   background-color: #94C5CC;
+   color: black;
 
 }
 
 .container-fluid {
-   padding:3px;
-   background-color:#A1B5B5;
+   padding: 3px;
+   background-color: var(--insidecolour);
 }
 
-.carousel-item{
-   padding:10px;
+.carousel-item {
+   padding: 10px;
 }
 
-.container{
-   padding: 10px;  
+.container {
+   padding: 10px;
 }
+
 .d-flex-column {
-   background-color:#A1B5B5; 
+   background-color: (--insidecolour);
 }
 
 .navbar-expand-lg {
-   background-color:darkcyan;
+   background-color: var(--bodycolour);
 }
 
-#bgcolor{
-   background-color:darkcyan;
-   width: 100vw; 
-    min-height:100vh;
-}
-#box-color{
-   background-color:#A1B5B5; 
-}
-#box-color-bg
-{
-   background-color:#A1B5B5;   
-}
-#book-cover{
-   background-color:#A1B5B5; 
-}
-#bg-color{
-   background-color:#A1B5B5; 
-}
-#book-data{
-   background-color:#A1B5B5; 
-}
-#reviews{
-   background-color:#A1B5B5;  
+#bgcolor {
+   background-color: var(--bodycolour);
+   width: 100vw;
+   min-height: 100vh;
 }
 
-a:link { text-decoration: none; }
-a:visited { text-decoration: none; }
-a:hover { text-decoration: none; }
-a:active { text-decoration: none; }
-
-.carousel{
-    width: 100%;
+#box-color, #box-color-bg, #book-cover, #bg-color, #book-data, #reviews {
+   background-color: (--insidecolour);
 }
 
-.landing-info{
-    font-family: "Fredoka one";
-    font-size: larger;
+ 
+a:link, a:visited, a:hover, a:active {
+   text-decoration: none;
 }
 
-#available-badge{
-    font-family:Arial, Helvetica, sans-serif
-    
+.carousel {
+   width: 100%;
 }
-/* user dash image carousel */
+
+.landing-info {
+   font-family: "Fredoka one";
+   font-size: larger;
+}
+
+.subtext {
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 70%;
+}
+
+#available-badge {
+   font-family: Arial, Helvetica, sans-serif
+}
+
 
 /* star rating */
 
 .rating {
-    position: relative;
-    width: 180px;
-    background: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: .3em;
-    padding: 5px;
-    overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 0 0 2px #b3acac;
-    background-color:#A1B5B5; 
- }
- 
- .rating__result {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateY(-10px) translateX(-5px);
-    z-index: -9;
-    font: 3em Arial, Helvetica, sans-serif;
-    color: #ebebeb8e;
-    pointer-events: none;
- }
- 
- .rating__star {
-    font-size: 1.3em;
-    cursor: pointer;
-    color: #dabd18b2;
-    transition: filter linear .3s;
- }
- 
- .rating__star:hover {
-    filter: drop-shadow(1px 1px 4px gold);
- }
+   position: relative;
+   width: 180px;
+   background: transparent;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: .3em;
+   padding: 5px;
+   overflow: hidden;
+   border-radius: 20px;
+   box-shadow: 0 0 2px #b3acac;
+   background-color: (--insidecolour);
+}
 
- /* .fa-trash{
-    color:rgb(241, 103, 103)
- }
- .fa-pen-to-square{
-    color: green;
- } */
+.rating__result {
+   position: absolute;
+   top: 0;
+   left: 0;
+   transform: translateY(-10px) translateX(-5px);
+   z-index: -9;
+   font: 3em Arial, Helvetica, sans-serif;
+   color: #ebebeb8e;
+   pointer-events: none;
+}
 
+.rating__star {
+   font-size: 1.3em;
+   cursor: pointer;
+   color: #dabd18b2;
+   transition: filter linear .3s;
+}
 
- .delete-review{
+.rating__star:hover {
+   filter: drop-shadow(1px 1px 4px gold);
+}
+
+.delete-review {
    position: absolute;
    right: 5%;
-    }
+}
 
-    /* star rating display by book */
-    body { font-size: 18px; }
+/* star rating display by book */
+body {
+   font-size: 18px;
+}
 
 .stars-container {
-  position: relative;
-  display: inline-block;
-  color: transparent;
+   position: relative;
+   display: inline-block;
+   color: transparent;
 }
 
 .stars-container:before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  content: '★★★★★';
-  color: lightgray;
+   position: absolute;
+   top: 0;
+   left: 0;
+   content: '★★★★★';
+   color: lightgray;
 }
 
 .stars-container:after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  content: '★★★★★';
-  color: gold;
-  overflow: hidden;
+   position: absolute;
+   top: 0;
+   left: 0;
+   content: '★★★★★';
+   color: gold;
+   overflow: hidden;
 }
 
-.stars-0:after { width: 0%; }
-.stars-1:after { width: 20%; }
-.stars-2:after { width: 40%; }
-.stars-3:after { width: 60%; }
-.stars-4:after { width: 80%; }
-.stars-5:after { width: 100; }
-    
+.stars-0:after {
+   width: 0%;
+}
+
+.stars-1:after {
+   width: 20%;
+}
+
+.stars-2:after {
+   width: 40%;
+}
+
+.stars-3:after {
+   width: 60%;
+}
+
+.stars-4:after {
+   width: 80%;
+}
+
+.stars-5:after {
+   width: 100;
+}
+
+/* userdash library tab hover imge */
+.hover {
+   overflow: hidden;
+   position: relative;
+   padding-bottom: 60%;
+}
+
+.hover-overlay {
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   top: 0;
+   left: 0;
+   z-index: 90;
+   transition: all 0.4s;
+}
+
+.hover img {
+   width: 100%;
+   position: absolute;
+   top: 0;
+   left: 0;
+   transition: all 0.3s;
+}
+
+.hover-content {
+   position: relative;
+   z-index: 99;
+}
+
+.hover-2 .hover-overlay {
+   background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1));
+}
+
+.hover-2-title {
+   position: absolute;
+   top: 50%;
+   left: 0;
+   text-align: center;
+   width: 100%;
+   z-index: 99;
+   transition: all 0.3s;
+}
+
+.hover-2-description {
+   width: 100%;
+   position: absolute;
+   bottom: 0;
+   opacity: 0;
+   left: 0;
+   text-align: center;
+   z-index: 99;
+   transition: all 0.3s;
+}
+
+.hover-2:hover .hover-2-title {
+   transform: translateY(-1.5rem);
+}
+
+.hover-2:hover .hover-2-description {
+   bottom: 0.5rem;
+   opacity: 1;
+}
+
+.hover-2:hover .hover-overlay {
+   background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1));
+}

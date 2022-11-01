@@ -1,9 +1,9 @@
 
 const adminAuth = (req, res, next) => {
-    // TODO: If the user is not logged in, redirect the user to the login page
+    // If the user is not an admin, redirect the user to the home page
     if (!req.session.admin){
       res.redirect('/')
-    // TODO: If the user is admin, allow them to view the paintings
+    // If the user is admin, allow them to access admin pages
   }else {
     next()
   }
