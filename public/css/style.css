@@ -11,22 +11,48 @@ font-family: "Fredoka one";
 }
 
 .container-fluid {
-   padding:5px;
+   padding:3px;
    background-color:#A1B5B5;
 }
 
-
-
-.container{
-   padding: 5px;  
+.carousel-item{
+   padding:10px;
 }
 
+.container{
+   padding: 10px;  
+}
+.d-flex-column {
+   background-color:#A1B5B5; 
+}
 
 .navbar-expand-lg {
    background-color:darkcyan;
 }
-.flex-column{
-   background-color:darkcyan; 
+
+#bgcolor{
+   background-color:darkcyan;
+   width: 100vw; 
+    min-height:100vh;
+}
+#box-color{
+   background-color:#A1B5B5; 
+}
+#box-color-bg
+{
+   background-color:#A1B5B5;   
+}
+#book-cover{
+   background-color:#A1B5B5; 
+}
+#bg-color{
+   background-color:#A1B5B5; 
+}
+#book-data{
+   background-color:#A1B5B5; 
+}
+#reviews{
+   background-color:#A1B5B5;  
 }
 
 a:link { text-decoration: none; }
@@ -63,6 +89,7 @@ a:active { text-decoration: none; }
     overflow: hidden;
     border-radius: 20px;
     box-shadow: 0 0 2px #b3acac;
+    background-color:#A1B5B5; 
  }
  
  .rating__result {
