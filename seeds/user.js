@@ -16,7 +16,7 @@ const userData = [
         username: "pang",
         password: bcrypt.hashSync('thebigpang', 10),
         email: `psychicsurge@gmail.com`,
-        first_name: 'Harbin',
+        first_name: 'Myste',
         last_name: 'Matthews',
         admin: false
     },

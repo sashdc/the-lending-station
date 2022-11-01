@@ -55,48 +55,30 @@ const newFormHandler = async (event) => {
 };
 
 // updating the rating 
-//let one = async () => {
-  const reviewRatings = fetch(`/api/book/ratings/`, {
-    method: "GET",
-    headers: {"Content-Type": "application/json"}
+const reviewRatings = fetch(`/api/book/ratings/`, {
+  method: "GET",
+  headers: {"Content-Type": "application/json"}
+})
+.then ((response) => response.json())
+
+.then((solomon) => {
+  return solomon.e
+})
+
+const salmon = async () => {
+  const arr = await reviewRatings
+  let shikigami = arr.reduce((a,b) => a + b, 0) / arr.length
+  console.log(shikigami)
+
+  await fetch(`/api/book/review/update`, {
+  method: 'PUT',
+  body: JSON.stringify({shikigami}),
+  headers: {"Content-Type": "application/json"}
   })
-  .then ((response) => response.json())
 
-  .then((solomon) => {
-    return solomon.e
-  })
-
-  const salmon = async () => {
-    const arr = await reviewRatings
-    let shikigami = arr.reduce((a,b) => a + b, 0) / arr.length
-    console.log(shikigami)
-
-    await fetch(`/api/book/review/update`, {
-    method: 'PUT',
-    body: JSON.stringify({shikigami}),
-    headers: {"Content-Type": "application/json"}
-    })
-
-  }
+}
 
 salmon()
-
-//}
-
-  // let e = reviewRatings.json()
-  // .then(data => ({data: data}))
-  // .then(res => {
-  //    newRating = res.data.e.reduce((a,b) => a + b, 0) / res.data.e.length})
-  // .then((e) => {
-  //   return e
-  // })}
-
-    // await fetch(`/api/book/review/update`, {
-    // method: 'PUT',
-    // body: JSON.stringify({newRating}),
-    // headers: {"Content-Type": "application/json"}
-    // })
-
 
 document
   .querySelector(".new-review-form")

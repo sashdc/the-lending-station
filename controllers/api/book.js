@@ -152,7 +152,7 @@ router.delete('/review/:id', async(req,res) => {
 
 //testing code
 router.get('/testing/:id', async (req, res) => {
-  const data = await Book.findOne({where: {'id': req.params.id}})
+  const data = await Cover.findOne({where: {'id': req.params.id}})
   res.status(200).json(data)
 })
 

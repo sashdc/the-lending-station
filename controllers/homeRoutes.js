@@ -49,10 +49,10 @@ router.get("/admin", adminAuth, async (req, res) => {
   try {
     // Get all books and JOIN with user data
     const bookData = await Book.findAll();
-    console.log(bookData);
+    //console.log(bookData);
     // Serialize data so the template can read it
     const books = bookData.map((book) => book.get({ plain: true }));
-    console.log(books);
+    //console.log(books);
     // Pass serialized data and session flag into template
     res.render("admin-dashboard", {
       books,
@@ -95,7 +95,7 @@ router.get("/library", async (req, res) => {
   try {
     // Get all books and JOIN with user data
     const bookData = await Book.findAll();
-    console.log(bookData);
+    //console.log(bookData);
     // Serialize data so the template can read it
     const books = bookData.map((book) => book.get({ plain: true }));
     // Pass serialized data and session flag into template
