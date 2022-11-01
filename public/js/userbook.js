@@ -65,6 +65,7 @@ const reviewRatings = fetch(`/api/book/ratings/`, {
   return solomon.e
 })
 
+//average rating
 const salmon = async () => {
   const arr = await reviewRatings;
   let shikigami = 0;
