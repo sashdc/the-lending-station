@@ -1,5 +1,4 @@
 
-  
   // delete a book when admin
   const delButtonHandler = async (event) => {
     const id = window.location.toString().split("/")[
@@ -54,7 +53,7 @@
               } else {
                 alert('Failed to delete the review');
               }
-            }        });
+            }});
     }
 
   

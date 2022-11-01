@@ -3,7 +3,6 @@ const {User, Book, Review, BorrowHistory, Cover} = require('../../models');
 
 let today = new Date ()
 
-
 //update book - cover_link dummy needs to be replaced
 router.put('/:id', async (req, res) => {
     try {
@@ -17,7 +16,6 @@ router.put('/:id', async (req, res) => {
               "available": req.body.available,
               "available_next": today,
               "borrowed_user": req.body.borrowed_user,
-              "cover_link": 7
             },
             {where: {id: req.params.id}})
 
@@ -120,22 +118,22 @@ router.post('/review', async (req, res) => {
 
 router.get('/ratings', async (req, res) => {
   const ratings = await Book.findOne({include: {model: Review, attributes: ['rating']}, where: {id: req.session.book_id}})
+  
   let e = ratings.reviews.map((f) => f.rating)
-  res.status(200).json({e}) 
-  console.log(e)
+
+  res.json({e})
 })
 
 //update rating
 router.put('/review/update', async (req, res) => {
-  const bookData = await Book.update({"rating": req.body},
+  const bookData = await Book.update({"rating": req.body.shikigami},
     {where: {id: req.session.book_id}})
 
     res.status(200).json({message: 'successfully updated rating'})
 })
 
 //delete review
-router.delete('/review/:id', async(req,res) => {
-  id = req.params.id
+router.delete('/review/:id', async(req,res) => { 
   try {  
     const reviewData = await Review.destroy({where: {"id": req.params.id}})
       if (!reviewData) {
@@ -148,5 +146,12 @@ router.delete('/review/:id', async(req,res) => {
       res.status(500).json(err);
     }
   })
+
+
+//testing code
+router.get('/testing/:id', async (req, res) => {
+  const data = await Book.findOne({where: {'id': req.params.id}})
+  res.status(200).json(data)
+})
 
 module.exports = router

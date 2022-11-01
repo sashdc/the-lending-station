@@ -1,6 +1,6 @@
 // star rating
 const ratingStars = [...document.getElementsByClassName("rating__star")];
-
+var newRating;
 let rating;
 
 function executeRating(stars) {
@@ -35,9 +35,7 @@ const newFormHandler = async (event) => {
     window.location.toString().split("/").length - 1
   ];
 
-  console.log(book_id)
   const content = document.querySelector("#reviewtext").value.trim();
-  console.log(content)
 
   if (content) {
         const response = await fetch(`/api/book/review`, {
@@ -47,10 +45,9 @@ const newFormHandler = async (event) => {
         "Content-Type": "application/json",
       },
     });
-   console.log(response);
     if (response.ok) {
-      updateReviewRating();      
-      document.location.replace(`/book/${book_id}`);
+      salmon()
+      document.location.reload();
     } else {
       alert("Failed to add review for the book");
     }
@@ -58,23 +55,48 @@ const newFormHandler = async (event) => {
 };
 
 // updating the rating 
-let updateReviewRating = async () => {
-  const reviewRatings = await fetch(`/api/book/ratings/`, {
+//let one = async () => {
+  const reviewRatings = fetch(`/api/book/ratings/`, {
     method: "GET",
     headers: {"Content-Type": "application/json"}
   })
+  .then ((response) => response.json())
 
-  let ratingArray = JSON.parse(reviewRatings)
-  const newRating = ratingArray.reduce((a,b) => a + b, 0) / ratingArray.length
-  console.log(newRating)
-
-  const updateReview = await fetch(`/api/book/review/update`, {
-    method: 'PUT',
-    body: JSON.stringify({newRating}),
-    headers: {"Content-Type": "application/json"}
+  .then((solomon) => {
+    return solomon.e
   })
-  console.log(updateReview)
-}
+
+  const salmon = async () => {
+    const arr = await reviewRatings
+    let shikigami = arr.reduce((a,b) => a + b, 0) / arr.length
+    console.log(shikigami)
+
+    await fetch(`/api/book/review/update`, {
+    method: 'PUT',
+    body: JSON.stringify({shikigami}),
+    headers: {"Content-Type": "application/json"}
+    })
+
+  }
+
+salmon()
+
+//}
+
+  // let e = reviewRatings.json()
+  // .then(data => ({data: data}))
+  // .then(res => {
+  //    newRating = res.data.e.reduce((a,b) => a + b, 0) / res.data.e.length})
+  // .then((e) => {
+  //   return e
+  // })}
+
+    // await fetch(`/api/book/review/update`, {
+    // method: 'PUT',
+    // body: JSON.stringify({newRating}),
+    // headers: {"Content-Type": "application/json"}
+    // })
+
 
 document
   .querySelector(".new-review-form")
