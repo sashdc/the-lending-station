@@ -7,6 +7,11 @@
    font-family: "Fredoka one";
 }
 
+#book-section{
+   display: flex;
+   flex-direction: row;
+}
+
 .jumbotron {
    padding: 1rem 0rem;
    font-family: "Fredoka one";
@@ -238,4 +243,13 @@ body {
 
 .hover-2:hover .hover-overlay {
    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1));
+}
+
+
+@media (max-width: 1000px) { 
+   #book-section{
+      flex-direction: column;
+   }
+   
+   
 }
