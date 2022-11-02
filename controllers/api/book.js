@@ -4,6 +4,7 @@ const withAuth = require("../../utlis/auth");
 const adminAuth = require("../../utlis/admin");
 
 let today = new Date();
+let nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
 
 //update book
 router.put("/:id", adminAuth, async (req, res) => {
@@ -16,7 +17,7 @@ router.put("/:id", adminAuth, async (req, res) => {
         author: req.body.author,
         isbn: req.body.isbn,
         available: req.body.available,
-        available_next: today,
+        available_next: nextWeek,
         borrowed_user: req.body.borrowed_user,
       },
       { where: { id: req.params.id } }
