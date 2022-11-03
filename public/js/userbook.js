@@ -68,8 +68,12 @@ const reviewRatings = fetch(`/api/book/ratings/`, {
 //average rating
 const salmon = async () => {
   const arr = await reviewRatings
-  let shikigami = arr.reduce((a,b) => a + b, 0) / arr.length
-  console.log(shikigami)
+  let shikigami;
+  if (arr) {
+    shikigami = arr.reduce((a,b) => a + b, 0) / arr.length;
+  } else {
+    shikigami = 0;
+  }
 
   await fetch(`/api/book/review/update`, {
   method: 'PUT',
