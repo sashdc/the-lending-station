@@ -20,30 +20,34 @@ router.get("/:id", withAuth, async (req, res) => {
       ],
     });
 
-    const reviews = await Review.findAll({
-      where: {book_id:req.params.id},
-      include: [
-               {
-          model: User,
-          attributes: ["username"],
-        },
-      ],
-    })
+    // const reviews = await Review.findAll({
+    //   where: {book_id:req.params.id},
+    //   include: [
+    //            {
+    //       model: User,
+    //       attributes: ["username"],
+    //     },
+    //   ],
+    // })
     const book = bookData.get({ plain: true });
-    // const reviews = bookData.reviews;
-    const review = reviews.map((x)=> x.get({ plain: true }));
-    console.log(review)
+    const reviews = book.reviews;
+    // const review = reviews.map((x)=> x.get({ plain: true }));
+    // console.log(review)
+    // const review = reviews.get({ plain: true }));
+
     starRating = Math.ceil(book.rating);
     console.log(starRating);
-    review.map((review) => {
+    console.log(reviews);
+    reviews.map((review) => {
       review.admin = req.session.admin;
     });
+    // console.log(review)
        req.session.save(() => {
       req.session.book_id = req.params.id;
       res.render("single-book", {
         book,
-        // reviews,
-        review,
+        reviews,
+        // review,
         starRating,
         loggedIn: req.session.loggedIn,
         admin: req.session.admin,
