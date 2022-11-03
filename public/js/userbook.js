@@ -84,7 +84,6 @@ const salmon = async () => {
 
 }
 
-salmon()
 document
   .querySelector(".new-review-form")
   .addEventListener("submit", newFormHandler);
