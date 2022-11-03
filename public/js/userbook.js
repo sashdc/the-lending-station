@@ -69,11 +69,12 @@ const reviewRatings = fetch(`/api/book/ratings/`, {
 const salmon = async () => {
   const arr = await reviewRatings
   let shikigami;
-  if (arr) {
+  if (arr.length) {
     shikigami = arr.reduce((a,b) => a + b, 0) / arr.length;
   } else {
     shikigami = 0;
   }
+
 
   await fetch(`/api/book/review/update`, {
   method: 'PUT',
@@ -84,7 +85,6 @@ const salmon = async () => {
 }
 
 salmon()
-
 document
   .querySelector(".new-review-form")
   .addEventListener("submit", newFormHandler);
