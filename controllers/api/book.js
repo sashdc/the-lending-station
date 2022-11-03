@@ -32,6 +32,7 @@ router.put("/:id", adminAuth, async (req, res) => {
   }
 });
 
+//create borrow history
 router.post("/:id/bh", adminAuth, async (req, res) => {
   const bhData = await BorrowHistory.create({
     user_id: req.body.borrowed_user,
