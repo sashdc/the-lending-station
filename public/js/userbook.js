@@ -1,6 +1,5 @@
 // star rating
 const ratingStars = [...document.getElementsByClassName("rating__star")];
-var newRating;
 let rating;
 
 function executeRating(stars) {
@@ -13,7 +12,6 @@ function executeRating(stars) {
     star.onclick = () => {
       i = stars.indexOf(star);
       rating = i + 1;
-      console.log("this many stars " + rating);
 
       if (star.className === starClassInactive) {
         for (i; i >= 0; --i) stars[i].className = starClassActive;
@@ -69,7 +67,7 @@ const reviewRatings = fetch(`/api/book/ratings/`, {
 const salmon = async () => {
   const arr = await reviewRatings
   let shikigami;
-  if (arr) {
+  if (arr.length) {
     shikigami = arr.reduce((a,b) => a + b, 0) / arr.length;
   } else {
     shikigami = 0;
@@ -80,10 +78,7 @@ const salmon = async () => {
   body: JSON.stringify({shikigami}),
   headers: {"Content-Type": "application/json"}
   })
-
 }
-
-salmon()
 
 document
   .querySelector(".new-review-form")
