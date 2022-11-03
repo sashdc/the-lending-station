@@ -1,6 +1,5 @@
 // star rating
 const ratingStars = [...document.getElementsByClassName("rating__star")];
-var newRating;
 let rating;
 
 function executeRating(stars) {
@@ -13,7 +12,6 @@ function executeRating(stars) {
     star.onclick = () => {
       i = stars.indexOf(star);
       rating = i + 1;
-      console.log("this many stars " + rating);
 
       if (star.className === starClassInactive) {
         for (i; i >= 0; --i) stars[i].className = starClassActive;
@@ -75,13 +73,11 @@ const salmon = async () => {
     shikigami = 0;
   }
 
-
   await fetch(`/api/book/review/update`, {
   method: 'PUT',
   body: JSON.stringify({shikigami}),
   headers: {"Content-Type": "application/json"}
   })
-
 }
 
 document
